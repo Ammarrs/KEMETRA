@@ -81,3 +81,7 @@
     @apply font-display;
   }
 }
+
+.active {
+  color: var(--color-primary)
+}
