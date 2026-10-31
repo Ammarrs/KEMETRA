@@ -1,141 +1,78 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
 @import "tailwindcss";
 
-/* ========================================
-   TAILWIND THEME VARIABLES
-======================================== */
+/* Optional: enables class-based dark: utilities */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  /* Typography */
+@theme {
+  /* Fonts */
   --font-display: "Playfair Display", serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
 
-  /* Semantic colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Light Theme */
+  --color-background: #FBF7EE;
+  --color-surface: #F3EBDD;
+  --color-surface-secondary: #E8DCBE;
 
-  --color-surface: var(--surface);
-  --color-surface-secondary: var(--surface-secondary);
+  --color-foreground: #131C2B;
+  --color-muted-foreground: #4E4638;
+  --color-muted: #7A580D;
 
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
+  --color-primary: #C69C4D;
+  --color-primary-hover: #A77D32;
+  --color-secondary: #0C131F;
+  --color-accent: #D4AF37;
 
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
+  --color-card: #FFFFFF;
+  --color-card-foreground: #131C2B;
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-border: #D2C5B3;
+  --color-divider: rgba(198, 156, 77, 0.22);
 
-  --color-border: var(--border);
-  --color-divider: var(--divider);
+  --color-destructive: #93000A;
+  --color-success: #2E5D65;
+  --color-info: #D1DAEF;
 
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-success: var(--success);
-  --color-info: var(--info);
-
-  /* Heritage colors */
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-terracotta: var(--terracotta);
-  --color-teal: var(--teal);
+  --color-gold: #C69C4D;
+  --color-gold-light: #EDC06D;
+  --color-terracotta: #B85D3B;
+  --color-teal: #2E5D65;
 }
 
-/* ========================================
-   LIGHT THEME
-======================================== */
-
-:root {
-  color-scheme: light;
-
-  /* Backgrounds */
-  --background: #FBF7EE;
-  --surface: #F3EBDD;
-  --surface-secondary: #E8DCBE;
-
-  /* Text */
-  --foreground: #131C2B;
-  --muted-foreground: #4E4638;
-  --muted: #7A580D;
-
-  /* Brand */
-  --primary: #C69C4D;
-  --primary-hover: #A77D32;
-  --secondary: #0C131F;
-  --accent: #D4AF37;
-
-  /* Components */
-  --card: #FFFFFF;
-  --card-foreground: #131C2B;
-  --border: #D2C5B3;
-  --divider: rgba(198, 156, 77, 0.22);
-
-  /* Status */
-  --destructive: #93000A;
-  --success: #2E5D65;
-  --info: #D1DAEF;
-
-  /* Heritage palette */
-  --gold: #C69C4D;
-  --gold-light: #EDC06D;
-  --terracotta: #B85D3B;
-  --teal: #2E5D65;
-}
-
-/* ========================================
-   DARK THEME
-======================================== */
-
+/* Dark Theme */
 .dark {
   color-scheme: dark;
 
-  /* Backgrounds */
-  --background: #0C131F;
-  --surface: #121B2A;
-  --surface-secondary: #1B293B;
+  --color-background: #0C131F;
+  --color-surface: #121B2A;
+  --color-surface-secondary: #1B293B;
 
-  /* Text */
-  --foreground: #F3EBDD;
-  --muted-foreground: #B9AE9D;
-  --muted: #D4AF78;
+  --color-foreground: #F3EBDD;
+  --color-muted-foreground: #B9AE9D;
+  --color-muted: #D4AF78;
 
-  /* Brand */
-  --primary: #D4AF67;
-  --primary-hover: #EDC06D;
-  --secondary: #E8DCBE;
-  --accent: #EDC06D;
+  --color-primary: #D4AF67;
+  --color-primary-hover: #EDC06D;
+  --color-secondary: #E8DCBE;
+  --color-accent: #EDC06D;
 
-  /* Components */
-  --card: #162233;
-  --card-foreground: #F3EBDD;
-  --border: #344253;
-  --divider: rgba(198, 156, 77, 0.25);
+  --color-card: #162233;
+  --color-card-foreground: #F3EBDD;
 
-  /* Status */
-  --destructive: #FF7777;
-  --success: #78B9A9;
-  --info: #A9C5F0;
+  --color-border: #344253;
+  --color-divider: rgba(198, 156, 77, 0.25);
 
-  /* Heritage palette */
-  --gold: #D4AF67;
-  --gold-light: #EDC06D;
-  --terracotta: #D17C59;
-  --teal: #75A9AE;
+  --color-destructive: #FF7777;
+  --color-success: #78B9A9;
+  --color-info: #A9C5F0;
+
+  --color-gold: #D4AF67;
+  --color-gold-light: #EDC06D;
+  --color-terracotta: #D17C59;
+  --color-teal: #75A9AE;
 }
 
-/* ========================================
-   BASE STYLES
-======================================== */
-
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground font-body;
   }
