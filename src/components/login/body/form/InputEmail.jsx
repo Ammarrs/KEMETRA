@@ -9,6 +9,7 @@ const InputEmail = () => {
           id="email"
           type="text"
           placeholder=" "
+          autoComplete="email"
           className="peer h-14 w-full rounded-xl border-2 border-border bg-transparent px-4 text-foreground outline-none transition-colors focus:border-primary"
         />
         <label
