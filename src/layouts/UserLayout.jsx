@@ -5,6 +5,7 @@ import About from "./../pages/About";
 import Story from './../pages/Story';
 import ExploreMap from './../pages/ExploreMap';
 import Login from "../pages/Login";
+import NotFound from "../pages/404/NotFound";
 
 function UserLayout() {
   return (
@@ -15,6 +16,7 @@ function UserLayout() {
         <Route path="/stories" element={<Story />} />
         <Route path="/map" element={<ExploreMap />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
