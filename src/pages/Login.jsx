@@ -1,4 +1,4 @@
-import LoginHeader from "../components/login/loginHeader"
+import LoginHeader from "../components/login/LoginHeader"
 import LoginBody from './../components/login/LoginBody';
 
 const Login = () => {
