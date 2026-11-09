@@ -7,10 +7,10 @@ function Header() {
   let [isLogedin, setIsLogedin] = useState(false);
 
   const links = [
-    { linkName: "Home", linkPath: "/" },
-    { linkName: "Explore Map", linkPath: "/map" },
-    { linkName: "Timeline", linkPath: "/timeline" },
-    { linkName: "Stories", linkPath: "/stories" },
+    { id:1, linkName: "Home", linkPath: "/" },
+    { id:2, linkName: "Explore Map", linkPath: "/map" },
+    { id:3, linkName: "Timeline", linkPath: "/timeline" },
+    { id:4, linkName: "Stories", linkPath: "/stories" },
   ];
 
   function handleSound() {
@@ -37,11 +37,11 @@ function Header() {
           />
         </svg>
 
-        <span className="text-primary text-2xl">KEMETRA</span>
+        <span className="text-background font-display text-2xl">KEMETRA</span>
       </div>
       <div className="nav-links flex gap-5 items-center">
         {links.map((link) => (
-          <NavLink active className="text-background" to={link.linkPath}>
+          <NavLink active className="text-background" key={link.id} to={link.linkPath}>
             {link.linkName}
           </NavLink>
         ))}
