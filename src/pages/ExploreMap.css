@@ -1,0 +1,434 @@
+
+.explore-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 22px 32px;
+  background: #FBF7EE;
+  color: #131C2B;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.explore-header {
+  margin-bottom: 16px;
+}
+
+.explore-header h1 {
+  margin: 0 0 5px;
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #131C2B;
+}
+
+.explore-header p {
+  margin: 0;
+  color: #4E4638;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.explore-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.explore-filters input,
+.explore-filters select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid #D2C5B3;
+  border-radius: 9px;
+  background: #FFFFFF;
+  color: #131C2B;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+.explore-filters input:focus,
+.explore-filters select:focus {
+  border-color: #C69C4D;
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.85fr);
+  gap: 18px;
+  height: calc(100vh - 190px);
+  min-height: 450px;
+}
+
+.map-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 24px;
+  border: 1px solid #D2C5B3;
+  border-radius: 18px;
+  background: #E8DCBE;
+  color: #7A580D;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+}
+
+.place-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 16px;
+  border: 1px solid #D2C5B3;
+  border-radius: 18px;
+  background: #FFFFFF;
+  overflow-y: auto;
+}
+
+.place-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.place-selector h3 {
+  margin: 0 0 3px;
+  color: #131C2B;
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+}
+
+.place-select-button {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1px solid #E3D8C7;
+  border-radius: 8px;
+  background: #FBF7EE;
+  color: #4E4638;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.place-select-button:hover {
+  border-color: #C69C4D;
+  background: #F3EBDD;
+}
+
+.place-select-button.active {
+  border-color: #C69C4D;
+  background: #E8DCBE;
+  color: #7A580D;
+}
+
+.place-image-container {
+  width: 100%;
+  height: 220px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #F3EBDD;
+  border: 1px solid #D2C5B3;
+}
+
+.place-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Place name - compact black and gold label */
+.place-details h2 {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 9px 16px;
+  border: 1px solid #C69C4D;
+  border-radius: 10px;
+  background: #171717;
+  color: #D8B45A;
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.place-details p {
+  margin: 0;
+  color: #4E4638;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.place-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.place-info-item {
+  padding: 9px;
+  border-radius: 8px;
+  background: #F3EBDD;
+}
+
+.place-info-item span {
+  display: block;
+  margin-bottom: 4px;
+  color: #7A580D;
+  font-size: 10px;
+}
+
+.place-info-item strong {
+  color: #131C2B;
+  font-size: 11px;
+}
+
+.filter-results {
+  font-size: 11px !important;
+  color: #7A580D !important;
+}
+
+.place-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.place-actions button {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #C69C4D;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #131C2B;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.place-actions button:first-child {
+  background: #C69C4D;
+  color: #FFFFFF;
+}
+
+.place-actions button:hover {
+  background: #A77D32;
+  color: #FFFFFF;
+}
+
+.empty-results {
+  padding: 15px 0;
+}
+
+.empty-results h2 {
+  font-size: 19px;
+}
+
+@media (max-width: 850px) {
+  .explore-page {
+    padding: 22px 18px;
+  }
+
+  .explore-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .explore-filters input {
+    grid-column: 1 / -1;
+  }
+
+  .map-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .map-area {
+    min-height: 400px;
+  }
+
+  .place-details {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .explore-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .explore-filters input {
+    grid-column: auto;
+  }
+
+  .place-info {
+    grid-template-columns: 1fr;
+  }
+}
+/* Egypt illustrated SVG map */
+
+.map-area {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: #F2EBDD;
+  border: 1px solid #D2C5B3;
+}
+
+.egypt-map {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  overflow: hidden;
+}
+
+.egypt-map-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.map-geography-labels text {
+  pointer-events: none;
+}
+
+.map-sea-label {
+  fill: #54777A;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.map-river-label {
+  fill: #356776;
+  font-size: 13px;
+}
+
+.map-region-label {
+  fill: #716B5D;
+  font-size: 11px;
+}
+
+.map-country-label {
+  fill: #665D4D;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+.map-city-label {
+  fill: #766E60;
+  font-size: 11px;
+}
+
+.map-compass text {
+  fill: #514A3D;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-compass path {
+  fill: none;
+  stroke: #514A3D;
+  stroke-width: 1.5;
+}
+
+.map-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-marker-dot {
+  fill: #131C2B;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+}
+
+.map-marker-selected {
+  fill: #C69C4D;
+  stroke: #FFFFFF;
+  stroke-width: 3;
+}
+
+.map-marker-center {
+  fill: #FFFFFF;
+}
+
+.map-label {
+  fill: #FFFFFF;
+  stroke: #E4D8C5;
+  stroke-width: 0.7;
+}
+
+.map-label-selected {
+  fill: #131C2B;
+  stroke: #131C2B;
+  stroke-width: 1;
+}
+
+.map-label-text {
+  fill: #34302A;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.map-label-text-selected {
+  fill: #E5BC59;
+  font-size: 10px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.map-counter-bg,
+.map-legend-bg {
+  fill: #FFFDF8;
+  stroke: #E3D8C7;
+  stroke-width: 0.8;
+}
+
+.map-counter-dot,
+.map-legend-selected {
+  fill: #C69C4D;
+}
+
+.map-counter-text,
+.map-legend-text {
+  fill: #514A3D;
+  font-size: 10px;
+}
+
+.map-legend-pharaonic {
+  fill: #131C2B;
+}
+
+.map-legend-coptic {
+  fill: #B96842;
+}
+
+.map-footer-text {
+  fill: #746B5D;
+  font-size: 9px;
+}
+
+@media (max-width: 850px) {
+  .egypt-map {
+    min-height: 400px;
+  }
+
+  .egypt-map-svg {
+    min-height: 400px;
+  }
+}

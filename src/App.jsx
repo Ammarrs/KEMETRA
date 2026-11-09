@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import ExploreMap from "./pages/ExploreMap"
+import Login from './pages/Login';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { NavbarProvider } from "./context/Navbar/navbarContext";

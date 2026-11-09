@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { HiOutlineSpeakerXMark, HiOutlineSpeakerWave } from "react-icons/hi2";
 
 function Header() {
@@ -19,6 +19,7 @@ function Header() {
 
   return (
     <div className="bg-secondary px-12 py-6 flex justify-between items-center">
+      <Link to="/">
       <div className="brand-mark flex gap-5 items-center">
         <svg
           width="28"
@@ -38,7 +39,7 @@ function Header() {
         </svg>
 
         <span className="text-background font-display text-2xl">KEMETRA</span>
-      </div>
+      </div></Link>
       <div className="nav-links flex gap-5 items-center">
         {links.map((link) => (
           <NavLink active className="text-background" key={link.id} to={link.linkPath}>
@@ -66,9 +67,11 @@ function Header() {
               <span className="text-primary">AM</span>
             </div>
           ) : (
-            <button className="border border-divider rounded-md px-2 py-1 text-background">
+            <Link to="login">
+              <button className="border hover:cursor-pointer border-divider rounded-md px-2 py-1 text-background">
               Login
             </button>
+            </Link>
           )}
         </div>
       </div>
