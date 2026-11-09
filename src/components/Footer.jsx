@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
+
   let exploreLinks = [
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "Explore Map", path: "/map" },
@@ -17,10 +18,10 @@ function Footer() {
   ];
 
   let connectLinks = [
-    { id: 1, name: "Pharaonic", path: "/pharaonic" },
-    { id: 2, name: "Coptic", path: "/coptic" },
-    { id: 3, name: "Islamic", path: "/islamic" },
-    { id: 4, name: "About KEMETRA", path: "/about" },
+    { id: 1, name: "contact", path: "/contact" },
+    // { id: 2, name: "Instagram", path: "/instagram" },
+    // { id: 3, name: "Youtube", path: "/youtube" },
+    // { id: 4, name: "Facebook", path: "/facebook" },
   ];
 
   return (
@@ -55,25 +56,25 @@ function Footer() {
           </div>
         </div>
         <div className="explore flex flex-col gap-2">
-          <div className="title">EXPLORE</div>
+          <div className="title text-primary">EXPLORE</div>
           {exploreLinks.map((link) => (
-            <Link key={link.id} to={link.path}>
+            <Link className="hover:text-primary" key={link.id} to={link.path}>
               {link.name}
             </Link>
           ))}
         </div>
         <div className="heritage flex flex-col gap-2">
-          <div className="title">HERITAGE</div>
+          <div className="title text-primary">HERITAGE</div>
           {heritageLinks.map((link) => (
-            <Link key={link.id} to={link.path}>
+            <Link className="hover:text-primary" key={link.id} to={link.path}>
               {link.name}
             </Link>
           ))}
         </div>
         <div className="connected flex flex-col gap-2">
-          <div className="title">STAY CONNECTED</div>
+          <div className="title text-primary">STAY CONNECTED</div>
           {connectLinks.map((link) => (
-            <Link key={link.id} to={link.path}>
+            <Link className="hover:text-primary" key={link.id} to={link.path}>
               {link.name}
             </Link>
           ))}
