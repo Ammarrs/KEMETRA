@@ -4,6 +4,7 @@ import { HiOutlineSpeakerXMark, HiOutlineSpeakerWave } from "react-icons/hi2";
 
 function Header() {
   let [sound, setSound] = useState(true);
+  let [isLogedin, setIsLogedin] = useState(false);
 
   const links = [
     { linkName: "Home", linkPath: "/" },
@@ -60,9 +61,15 @@ function Header() {
           </button>
         </div>
         <div className="login">
-          <button className="border border-divider rounded-md px-2 py-1 text-background">
-            Login
-          </button>
+          {isLogedin ? (
+            <div className="profile text-center border border-primary rounded-full p-2">
+              <span className="text-primary">AM</span>
+            </div>
+          ) : (
+            <button className="border border-divider rounded-md px-2 py-1 text-background">
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>
