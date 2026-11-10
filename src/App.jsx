@@ -1,8 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import ExploreMap from "./pages/ExploreMap"
-import Login from './pages/Login';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import { NavbarProvider } from "./context/Navbar/navbarContext";
 import { ProfileProvider } from "./context/Profile/profileContext";
 import { AuthProvider } from "./context/Authentication/authContext";
@@ -15,12 +11,10 @@ function App() {
       <NavbarProvider>
         <ProfileProvider>
           <div className="font-body">
-            <Header />
             <Routes>
               <Route path="/*" element={<UserLayout />} />
               <Route path="/admin/*" element={<AdminLayout />} />
             </Routes>
-            <Footer />
           </div>
         </ProfileProvider>
       </NavbarProvider>
