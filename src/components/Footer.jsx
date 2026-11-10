@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BrandMark from "./BrandMark";
 
 function Footer() {
 
@@ -29,23 +30,7 @@ function Footer() {
       <div className="upper flex justify-between pb-12">
         <div className="brief flex flex-col gap-5">
           <div className="brand flex gap-3 items-center">
-            <svg
-              width="28"
-              height="25"
-              viewBox="0 0 28 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <mask id="stroke0_2_35525" fill="white">
-                <path d="M0 24.6858L14 3.52859e-05L28 24.6858H21H7H0Z" />
-              </mask>
-              <path
-                d="M14 12.3429L14.5437 12.0346L14 11.076L13.4563 12.0346L14 12.3429ZM7 24.6858L7.54366 24.9941L14.5437 12.6512L14 12.3429L13.4563 12.0346L6.45634 24.3774L7 24.6858ZM14 12.3429L13.4563 12.6512L20.4563 24.9941L21 24.6858L21.5437 24.3774L14.5437 12.0346L14 12.3429ZM-2 30.8572V31.4822H30V30.8572V30.2322H-2V30.8572ZM14 -5.14282H13.375V3.52859e-05H14H14.625V-5.14282H14ZM0 24.6858L-1.08731 24.0691L-2.14594 25.9358H0V24.6858ZM14 3.52859e-05L15.0873 -0.616611L14 -2.53383L12.9127 -0.616611L14 3.52859e-05ZM28 24.6858V25.9358H30.1459L29.0873 24.0691L28 24.6858ZM0 24.6858L1.08731 25.3024L15.0873 0.616682L14 3.52859e-05L12.9127 -0.616611L-1.08731 24.0691L0 24.6858ZM14 3.52859e-05L12.9127 0.616682L26.9127 25.3024L28 24.6858L29.0873 24.0691L15.0873 -0.616611L14 3.52859e-05ZM28 24.6858V23.4358H21V24.6858V25.9358H28V24.6858ZM21 24.6858V23.4358H7V24.6858V25.9358H21V24.6858ZM7 24.6858V23.4358H0V24.6858V25.9358H7V24.6858Z"
-                fill="#C69C4D"
-                mask="url(#stroke0_2_35525)"
-              />
-            </svg>
-            <div className="title font-display text-2xl">KEMETRA</div>
+            <BrandMark/>
           </div>
           <div className="info w-120 text-subtitle">
             Egypt’s heritage, in place and in perspective. Discover the
