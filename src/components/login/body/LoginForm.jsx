@@ -1,10 +1,31 @@
 import { Link } from "react-router-dom";
 import InputEmail from './form/InputEmail';
 import InputPassword from "./form/InputPassword";
-import { Checkbox } from '@heroui/react';
 import { FiArrowRight, FiArrowUpRight, FiLock, } from "react-icons/fi";
+import { useState } from "react";
+import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleCheckbox = (e) => {
+    setRememberMe(e.target.checked);
+  };
+
+  const { login } = useAuth();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email && password && !passwordError && !emailError) {
+      login({ email, password }, rememberMe);
+    }
+  };
   return (
     <section className="mx-auto w-full max-w-xl font-body border-2 border-border p-5 rounded-3xl shadow-2xl">
 
@@ -24,17 +45,29 @@ export default function LoginForm() {
       </div>
 
       {/* Form */}
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Email */}
-        <InputEmail />
+        <InputEmail
+          email={email}
+          setEmail={setEmail}
+          emailError={emailError}
+          setEmailError={setEmailError}
+        />
         {/* Password */}
-        <InputPassword />
+        <InputPassword
+          password={password}
+          setPassword={setPassword}
+          passwordError={passwordError}
+          setPasswordError={setPasswordError}
+        />
         {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between gap-3">
           <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-foreground">
             <input
               type="checkbox"
               name="rememberMe"
+              checked={rememberMe}
+              onChange={handleCheckbox}
               className="size-4 cursor-pointer rounded border-border accent-primary focus:ring-primar"
             />
             Remember me
@@ -50,7 +83,7 @@ export default function LoginForm() {
 
         {/* Sign In Button */}
         <button
-          type="button"
+          type="submit"
           className="flex h-12 w-full items-center justify-center gap-3 rounded-md bg-primary text-sm font-semibold text-secondary transition-all duration-300 hover:bg-primary-hover"
         >
           <FiArrowRight className="text-base" />

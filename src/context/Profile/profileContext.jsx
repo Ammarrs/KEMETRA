@@ -4,7 +4,7 @@ import React from "react";
 let ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
-  return <ProfileContext.Provider>{children}</ProfileContext.Provider>;
+  return <ProfileContext.Provider value={{}}>{children}</ProfileContext.Provider>;
 }
 
 export default ProfileContext;
