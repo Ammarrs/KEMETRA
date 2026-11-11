@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "./../pages/About";
+import HistoryTimeline from "../pages/HistoryTimeline";
 import Story from "./../pages/Story";
 import ExploreMap from "./../pages/ExploreMap";
 import Login from "../pages/Login";
@@ -20,6 +21,7 @@ function UserLayout() {
         <Route path="/map" element={<ExploreMap />} />
         <Route path="/login" element={<Login />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/timeline" element={<HistoryTimeline />} />
       </Routes>
       <Footer />
     </div>
