@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SettingsCard from "./SettingsCard";
 import SettingsRow from "./SettingsRow";
 import Toggle from "./Toggle";
+import SelectControl from './SelectControl';
 import {
   FiMusic,
 } from "react-icons/fi";
@@ -32,7 +33,7 @@ export default function AmbientMusicSettings() {
         description="Play subtle background music while browsing Kemetra."
       >
         <Toggle
-          checked={enabled}
+          checked={!enabled}
           onChange={setEnabled}
           label="Enable ambient music"
         />
@@ -45,17 +46,17 @@ export default function AmbientMusicSettings() {
             Ambient track
           </label>
 
-          <select
-            id="ambient-track"
-            disabled={!enabled}
+          <SelectControl
+            disabled={enabled}
+            label="Ambient track"
             value={track}
-            onChange={(event) => selectOnChange(event.target.value)}
-            className="max-w-40 rounded-md border-2 border-border bg-card px-2 py-1.5 text-xs"
-          >
-            <option>Ancient Egypt</option>
-            <option>Nile at Night</option>
-            <option>Desert Winds</option>
-          </select>
+            onChange={selectOnChange}
+            options={[
+              { value: "ancientEgypt", label: "Ancient Egypt" },
+              { value: "nileAtNight", label: "Nile at Night" },
+              { value: "desertWinds", label: "Desert Winds" },
+            ]}
+          />
         </div>
 
         <div className="mt-4 flex items-center justify-between text-xs">

@@ -3,6 +3,9 @@ import { useState } from 'react';
 import AccountSettings from './../components/settings/AccountSettings';
 import LanguageSettings from './../components/settings/LanguageSettings';
 import AmbientMusicSettings from './../components/settings/AmbientMusicSettings';
+import PlaybackSettings from './../components/settings/PlaybackSettings';
+import AccessibilitySettings from './../components/settings/AccessibilitySettings';
+import PrivacySettings from './../components/settings/PrivacySettings';
 
 const Settings = () => {
   const [activeSection, setActiveSection] = useState("account");
@@ -32,9 +35,9 @@ const Settings = () => {
             {activeSection === "account" && <AccountSettings />}
             {activeSection === "language" && <LanguageSettings />}
             {activeSection === "ambient" && <AmbientMusicSettings />}
-            {/* {activeSection === "playback" && <PlaybackSettings />}
+            {activeSection === "playback" && <PlaybackSettings />}
             {activeSection === "accessibility" && <AccessibilitySettings />}
-            {activeSection === "privacy" && <PrivacySettings />} */}
+            {activeSection === "privacy" && <PrivacySettings />}
           </div>
         </div>
       </div>
