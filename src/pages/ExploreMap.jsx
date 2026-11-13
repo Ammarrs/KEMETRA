@@ -505,9 +505,8 @@ function ExploreMap() {
               <button
                 key={place.id}
                 type="button"
-                className={`place-select-button ${
-                  selectedPlace.id === place.id ? "active" : ""
-                }`}
+                className={`place-select-button ${selectedPlace.id === place.id ? "active" : ""
+                  }`}
                 onClick={() => setSelectedPlace(place)}
               >
                 {place.name}
