@@ -1,5 +1,6 @@
 
 export default function SelectControl({
+  disabled = false,
   value,
   onChange,
   options,
@@ -7,6 +8,7 @@ export default function SelectControl({
 }) {
   return (
     <select
+      disabled={disabled}
       aria-label={label}
       value={value}
       onChange={(event) => onChange(event.target.value)}
