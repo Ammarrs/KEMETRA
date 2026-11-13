@@ -6,6 +6,7 @@ import MilestoneList from "../../components/admin/timeline/MilestoneList";
 import MilestoneEditor from "../../components/admin/timeline/MilestoneEditor";
 
 const timelineImage = "/story/592b737b45f754171d2663cd232cf9bd1602e461.jpg";
+
 const initialMilestones = [
   {
     id: 1,
