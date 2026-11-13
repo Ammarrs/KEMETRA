@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Login from './../../pages/Login';
 let AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -7,6 +9,8 @@ export function AuthProvider({ children }) {
   const [userError, setUserError] = useState("");
   const [token, setToken] = useState(localStorage.token ? localStorage.token : '');
   const [connect, setConnect] = useState(false);
+  const navigate = useNavigate();
+  const gologin = () => navigate("/login");
 
 
   const login = (userData, rememberMe) => {
@@ -20,7 +24,8 @@ export function AuthProvider({ children }) {
     localStorage.token = "";
     setToken("");
     setUser(null);
-    connect(false);
+    setConnect(false);
+    gologin();
   }
   const getUserAfterLogin = () => {
     if (token) {
