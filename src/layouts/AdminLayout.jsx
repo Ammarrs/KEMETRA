@@ -5,7 +5,7 @@ import AdminNavbar from './../components/AdminNavbar';
 
 function AdminLayout() {
   return (
-    <div className='flex'>
+    <div className='flex min-h-screen'>
       <AdminNavbar/>
       <Dashboard/>
     </div>
