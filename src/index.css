@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "@heroui/styles";
-
 
 /* Optional: enables class-based dark: utilities */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -12,68 +11,68 @@
   --font-body: "Plus Jakarta Sans", sans-serif;
 
   /* Light Theme */
-  --color-background: #FBF7EE;
-  --color-surface: #F3EBDD;
-  --color-surface-secondary: #E8DCBE;
-  --color-subtitle: #C7C1B4;
-  
-  --color-foreground: #131C2B;
-  --color-muted-foreground: #4E4638;
-  --color-muted: #7A580D;
-  
-  --color-primary: #C69C4D;
-  --color-primary-hover: #A77D32;
-  --color-secondary: #0C131F;
-  --color-accent: #D4AF37;
-  
-  --color-card: #FFFFFF;
-  --color-card-foreground: #131C2B;
-  
-  --color-border: #D2C5B3;
+  --color-background: #fbf7ee;
+  --color-surface: #f3ebdd;
+  --color-surface-secondary: #e8dcbe;
+  --color-subtitle: #c7c1b4;
+
+  --color-foreground: #131c2b;
+  --color-muted-foreground: #4e4638;
+  --color-muted: #7a580d;
+
+  --color-primary: #c69c4d;
+  --color-primary-hover: #a77d32;
+  --color-secondary: #0c131f;
+  --color-accent: #d4af37;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #131c2b;
+
+  --color-border: #d2c5b3;
   --color-divider: rgba(198, 156, 77, 0.22);
-  
-  --color-destructive: #93000A;
-  --color-success: #2E5D65;
-  --color-info: #D1DAEF;
-  
-  --color-gold: #C69C4D;
-  --color-gold-light: #EDC06D;
-  --color-terracotta: #B85D3B;
-  --color-teal: #2E5D65;
+
+  --color-destructive: #93000a;
+  --color-success: #2e5d65;
+  --color-info: #d1daef;
+
+  --color-gold: #c69c4d;
+  --color-gold-light: #edc06d;
+  --color-terracotta: #b85d3b;
+  --color-teal: #2e5d65;
 }
 
 /* Dark Theme */
 .dark {
   color-scheme: dark;
-  
-  --color-background: #0C131F;
-  --color-surface: #121B2A;
-  --color-surface-secondary: #1B293B;
-  --color-subtitle: #383E4A;
 
-  --color-foreground: #F3EBDD;
-  --color-muted-foreground: #B9AE9D;
-  --color-muted: #D4AF78;
+  --color-background: #0c131f;
+  --color-surface: #121b2a;
+  --color-surface-secondary: #1b293b;
+  --color-subtitle: #383e4a;
 
-  --color-primary: #D4AF67;
-  --color-primary-hover: #EDC06D;
-  --color-secondary: #E8DCBE;
-  --color-accent: #EDC06D;
+  --color-foreground: #f3ebdd;
+  --color-muted-foreground: #b9ae9d;
+  --color-muted: #d4af78;
+
+  --color-primary: #d4af67;
+  --color-primary-hover: #edc06d;
+  --color-secondary: #e8dcbe;
+  --color-accent: #edc06d;
 
   --color-card: #162233;
-  --color-card-foreground: #F3EBDD;
+  --color-card-foreground: #f3ebdd;
 
   --color-border: #344253;
   --color-divider: rgba(198, 156, 77, 0.25);
 
-  --color-destructive: #FF7777;
-  --color-success: #78B9A9;
-  --color-info: #A9C5F0;
+  --color-destructive: #ff7777;
+  --color-success: #78b9a9;
+  --color-info: #a9c5f0;
 
-  --color-gold: #D4AF67;
-  --color-gold-light: #EDC06D;
-  --color-terracotta: #D17C59;
-  --color-teal: #75A9AE;
+  --color-gold: #d4af67;
+  --color-gold-light: #edc06d;
+  --color-terracotta: #d17c59;
+  --color-teal: #75a9ae;
 }
 
 @layer base {
@@ -81,11 +80,16 @@
     @apply bg-background text-foreground font-body;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 }
 
 .active {
-  color: var(--color-primary)
+  color: var(--color-primary);
 }

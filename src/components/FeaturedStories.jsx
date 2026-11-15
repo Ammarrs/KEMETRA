@@ -1,7 +1,8 @@
-import React from 'react';
-import { Headphones } from 'lucide-react';
-import { ArrowLink, CONTAINER, EraBadge, SectionTitle } from './Shared';
-import { FEATURED_STORIES } from '../data/kemetraData';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Headphones } from "lucide-react";
+import { ArrowLink, CONTAINER, EraBadge, SectionTitle } from "./Shared";
+import { FEATURED_STORIES } from "../data/kemetraData";
 
 export default function FeaturedStories() {
   return (
@@ -10,7 +11,7 @@ export default function FeaturedStories() {
         <SectionTitle
           eyebrow="From the collection"
           title="Featured Stories"
-          right={<ArrowLink href="#stories">Browse all stories</ArrowLink>}
+          right={<ArrowLink to="/stories">Browse all stories</ArrowLink>}
         />
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -35,17 +36,24 @@ export default function FeaturedStories() {
                   </span>
                 </div>
 
-                <h3 className="mt-4 font-display text-[24px] leading-8 text-foreground">{story.title}</h3>
-                <p className="mt-[18px] flex-1 text-[15px] leading-6 text-muted-foreground">{story.excerpt}</p>
+                <h3 className="mt-4 font-display text-[24px] leading-8 text-foreground">
+                  {story.title}
+                </h3>
+                <p className="mt-[18px] flex-1 text-[15px] leading-6 text-muted-foreground">
+                  {story.excerpt}
+                </p>
 
                 <div className="mt-[19px] flex border-t border-divider pt-[17px]">
-                  <button
-                    type="button"
+                  <Link
+                    to="/stories"
                     className="inline-flex items-center gap-2.5 text-[13px] font-semibold leading-5 text-foreground transition-colors hover:text-primary-hover"
                   >
                     Hear the Story
-                    <Headphones className="h-4 w-4 text-gold" strokeWidth={1.5} />
-                  </button>
+                    <Headphones
+                      className="h-4 w-4 text-gold"
+                      strokeWidth={1.5}
+                    />
+                  </Link>
                 </div>
               </div>
             </article>

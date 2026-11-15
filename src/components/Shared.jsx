@@ -1,12 +1,15 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { ERAS } from '../data/kemetraData';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { ERAS } from "../data/kemetraData";
 
-export const CONTAINER = 'mx-auto w-full max-w-[1440px] px-6 md:px-12';
+export const CONTAINER = "mx-auto w-full max-w-[1440px] px-6 md:px-12";
 
-export function Eyebrow({ children, className = 'text-muted-foreground' }) {
+export function Eyebrow({ children, className = "text-muted-foreground" }) {
   return (
-    <p className={`text-[11px] font-bold uppercase leading-4 tracking-[0.12em] ${className}`}>
+    <p
+      className={`text-[11px] font-bold uppercase leading-4 tracking-[0.12em] ${className}`}
+    >
       {children}
     </p>
   );
@@ -26,12 +29,21 @@ export function SectionTitle({ eyebrow, title, right, eyebrowClass }) {
   );
 }
 
-export function ArrowLink({ href, children }) {
+export function ArrowLink({ to, href, children }) {
+  const cls =
+    "group inline-flex items-center gap-2 text-[13px] font-semibold leading-5 text-foreground transition-colors hover:text-primary-hover";
+
+  if (to) {
+    return (
+      <Link to={to} className={cls}>
+        {children}
+        <ArrowRight className="h-4 w-4 text-gold transition-transform group-hover:translate-x-0.5" />
+      </Link>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      className="group inline-flex items-center gap-2 text-[13px] font-semibold leading-5 text-foreground transition-colors hover:text-primary-hover"
-    >
+    <a href={href} className={cls}>
       {children}
       <ArrowRight className="h-4 w-4 text-gold transition-transform group-hover:translate-x-0.5" />
     </a>
