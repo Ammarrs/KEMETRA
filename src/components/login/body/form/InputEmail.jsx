@@ -1,24 +1,9 @@
 
-const InputEmail = ({ email, setEmail, emailError, setEmailError }) => {
+const InputEmail = ({ email, setEmail, emailError, setEmailError, validateEmail }) => {
 
-  const validateInput = (value) => {
-    if (!value.trim()) {
-      return "Email is required";
-    }
-
-    if (value) {
-      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
-      if (!isValidEmail) {
-        return "Please enter a valid email address";
-      }
-    }
-
-    return "";
-  };
 
   const handleBlur = () => {
-    setEmailError(validateInput(email));
+    setEmailError(validateEmail(email));
   };
 
   const handleChange = (e) => {
@@ -26,7 +11,7 @@ const InputEmail = ({ email, setEmail, emailError, setEmailError }) => {
     setEmail(value);
 
     if (emailError) {
-      setEmailError(validateInput(value));
+      setEmailError(validateEmail(value));
     }
   };
   return (

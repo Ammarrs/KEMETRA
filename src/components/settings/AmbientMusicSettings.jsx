@@ -33,7 +33,7 @@ export default function AmbientMusicSettings() {
         description="Play subtle background music while browsing Kemetra."
       >
         <Toggle
-          checked={!enabled}
+          checked={enabled}
           onChange={setEnabled}
           label="Enable ambient music"
         />
@@ -47,7 +47,7 @@ export default function AmbientMusicSettings() {
           </label>
 
           <SelectControl
-            disabled={enabled}
+            disabled={!enabled}
             label="Ambient track"
             value={track}
             onChange={selectOnChange}
