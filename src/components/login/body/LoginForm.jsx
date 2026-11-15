@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -14,17 +15,51 @@ export default function LoginForm() {
 
   const [rememberMe, setRememberMe] = useState(false);
 
+
+  const validatePassword = (value) => {
+    if (!value.trim()) {
+      return "Password is required";
+    }
+
+    if (value.length < 8) {
+      return "Password must be at least 8 characters";
+    }
+
+    return "";
+  };
+  const validateEmail = (value) => {
+    if (!value.trim()) {
+      return "Email is required";
+    }
+
+    if (value) {
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+      if (!isValidEmail) {
+        return "Please enter a valid email address";
+      }
+    }
+
+    return "";
+  };
+
+
   const handleCheckbox = (e) => {
     setRememberMe(e.target.checked);
   };
 
-  const { login } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email && password && !passwordError && !emailError) {
-      login({ email, password }, rememberMe);
-    }
+    const emailValidation = validateEmail(email);
+    const passwordValidation = validatePassword(password);
+
+    setEmailError(emailValidation);
+    setPasswordError(passwordValidation);
+
+    if (emailValidation || passwordValidation) return;
+
+    login({ email, password }, rememberMe);
   };
   return (
     <section className="mx-auto w-full max-w-xl font-body border-2 border-border p-5 rounded-3xl shadow-2xl">
@@ -48,6 +83,7 @@ export default function LoginForm() {
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Email */}
         <InputEmail
+          validateEmail={validateEmail}
           email={email}
           setEmail={setEmail}
           emailError={emailError}
@@ -55,6 +91,7 @@ export default function LoginForm() {
         />
         {/* Password */}
         <InputPassword
+          validatePassword={validatePassword}
           password={password}
           setPassword={setPassword}
           passwordError={passwordError}
