@@ -1,21 +1,26 @@
 
-import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import Story from "./pages/Story"
-import ExploreMap from "./pages/ExploreMap"
-import Profile from "./pages/Profile"
+import { Route, Routes } from "react-router-dom";
+import { NavbarProvider } from "./context/Navbar/navbarContext";
+import { ProfileProvider } from "./context/Profile/profileContext";
+import { AuthProvider } from "./context/Authentication/authContext";
+import UserLayout from "./layouts/UserLayout";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/stories" element={<Story />} />
-        <Route path="/explore-map" element={<ExploreMap />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </div>
-  )
+    <AuthProvider>
+      <NavbarProvider>
+        <ProfileProvider>
+          <div className="font-body">
+            <Routes>
+              <Route path="/*" element={<UserLayout />} />
+              <Route path="/admin/*" element={<AdminLayout />} />
+            </Routes>
+          </div>
+        </ProfileProvider>
+      </NavbarProvider>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
