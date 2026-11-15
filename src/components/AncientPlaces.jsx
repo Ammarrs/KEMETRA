@@ -1,7 +1,8 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { ArrowLink, CONTAINER, EraBadge, SectionTitle } from './Shared';
-import { PLACES } from '../data/kemetraData';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { ArrowLink, CONTAINER, EraBadge, SectionTitle } from "./Shared";
+import { PLACES } from "../data/kemetraData";
 
 export default function AncientPlaces() {
   return (
@@ -10,12 +11,12 @@ export default function AncientPlaces() {
         <SectionTitle
           eyebrow="A sense of place"
           title="Discover Ancient Places"
-          right={<ArrowLink href="#map">See places on the map</ArrowLink>}
+          right={<ArrowLink to="/explore-map">See places on the map</ArrowLink>}
         />
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PLACES.map((place) => (
-            <a key={place.id} href="#map" className="group block">
+            <Link key={place.id} to="/explore-map" className="group block">
               <div className="h-[248px] overflow-hidden rounded">
                 <img
                   src={place.image}
@@ -37,7 +38,7 @@ export default function AncientPlaces() {
               <div className="mt-5">
                 <EraBadge era={place.era} />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

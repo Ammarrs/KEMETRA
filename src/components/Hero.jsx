@@ -1,10 +1,14 @@
-import React from 'react';
-import { ArrowDown, ArrowRight, Map as MapIcon } from 'lucide-react';
-import { CONTAINER } from './Shared';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight, Map as MapIcon } from "lucide-react";
+import { CONTAINER } from "./Shared";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-[650px] overflow-hidden bg-secondary text-background">
+    <section
+      id="top"
+      className="relative min-h-[650px] overflow-hidden bg-secondary text-background"
+    >
       <img
         src="/images/karnak-hero.jpg"
         alt="The hypostyle columns of Karnak Temple, Luxor"
@@ -14,7 +18,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(90deg, rgba(11,17,29,.96) 0%, rgba(11,17,29,.84) 21%, rgba(11,17,29,.75) 42%, rgba(11,17,29,.52) 62%, rgba(11,17,29,.27) 83%, rgba(11,17,29,.14) 100%)',
+            "linear-gradient(90deg, rgba(11,17,29,.96) 0%, rgba(11,17,29,.84) 21%, rgba(11,17,29,.75) 42%, rgba(11,17,29,.52) 62%, rgba(11,17,29,.27) 83%, rgba(11,17,29,.14) 100%)",
         }}
       />
 
@@ -32,25 +36,25 @@ export default function Hero() {
           </h1>
 
           <p className="mt-[22px] max-w-[480px] text-[18px] leading-[30px] text-background">
-            Journey through Egypt’s places, people and enduring traditions. A living heritage,
-            waiting to be explored.
+            Journey through Egypt’s places, people and enduring traditions. A
+            living heritage, waiting to be explored.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
-            <a
-              href="#map"
+            <Link
+              to="/explore-map"
               className="inline-flex h-12 items-center gap-2.5 rounded bg-gold px-5 text-[14px] font-medium text-secondary transition-colors hover:bg-primary-hover"
             >
               Start Exploring
               <MapIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="#timeline"
+            </Link>
+            <Link
+              to="/timeline"
               className="inline-flex h-12 items-center gap-2.5 rounded border border-gold px-5 text-[14px] font-medium text-background transition-colors hover:bg-gold/10"
             >
               Explore the Timeline
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -66,7 +70,9 @@ export default function Hero() {
           <p className="text-[11px] font-bold uppercase leading-6 tracking-[0.12em] text-gold">
             In the frame
           </p>
-          <p className="text-[13px] leading-6 text-background">The columns of Karnak · Luxor</p>
+          <p className="text-[13px] leading-6 text-background">
+            The columns of Karnak · Luxor
+          </p>
         </div>
       </div>
     </section>
