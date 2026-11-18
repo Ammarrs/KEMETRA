@@ -6,43 +6,17 @@ import { useState } from "react";
 import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {
-  const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
-  const [rememberMe, setRememberMe] = useState(false);
-
-
-  const validatePassword = (value) => {
-    if (!value.trim()) {
-      return "Password is required";
-    }
-
-    if (value.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-
-    return "";
-  };
-  const validateEmail = (value) => {
-    if (!value.trim()) {
-      return "Email is required";
-    }
-
-    if (value) {
-      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
-      if (!isValidEmail) {
-        return "Please enter a valid email address";
-      }
-    }
-
-    return "";
-  };
-
+  const {
+    login,
+    email,
+    setEmailError,
+    password,
+    setPasswordError,
+    rememberMe,
+    setRememberMe,
+    validateEmail,
+    validatePassword,
+  } = useAuth();
 
   const handleCheckbox = (e) => {
     setRememberMe(e.target.checked);
@@ -82,21 +56,9 @@ export default function LoginForm() {
       {/* Form */}
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Email */}
-        <InputEmail
-          validateEmail={validateEmail}
-          email={email}
-          setEmail={setEmail}
-          emailError={emailError}
-          setEmailError={setEmailError}
-        />
+        <InputEmail />
         {/* Password */}
-        <InputPassword
-          validatePassword={validatePassword}
-          password={password}
-          setPassword={setPassword}
-          passwordError={passwordError}
-          setPasswordError={setPasswordError}
-        />
+        <InputPassword />
         {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between gap-3">
           <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-foreground">
