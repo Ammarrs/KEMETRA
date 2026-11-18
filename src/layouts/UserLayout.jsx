@@ -14,6 +14,7 @@ import NotFound from "../pages/404/NotFound";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ForgotPassword from "../pages/ForgotPassword";
 
 function UserLayout() {
   return (
@@ -33,6 +34,7 @@ function UserLayout() {
 
           {/* Auth & User Account Pages */}
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />

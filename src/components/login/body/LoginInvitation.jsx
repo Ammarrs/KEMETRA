@@ -1,4 +1,5 @@
 import { FiMapPin } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 export default function LoginInvitation() {
   return (
@@ -26,13 +27,15 @@ export default function LoginInvitation() {
           across Egypt's many layers of heritage.
         </p>
 
-        <div className="mt-2 flex items-center justify-between border-t text-accent/75 border-divider pt-4">
-          <span className="text-xs font-medium ">
-            The columns of Karnak · Luxor
-          </span>
+        <Link to="/story/:storyId" className="hover:bg-primary-hover/50 hover:text-card transition-all duration-500 py-5 px-2 rounded-4xl group">
 
-          <FiMapPin className="text-xl text-primary" />
-        </div>
+          <div className=" flex items-center justify-between border-t text-accent/75 border-divider ">
+            <span className="text-xs font-medium transition-all duration-1000 group-hover:translate-x-10 group-hover:scale-125" >
+              The columns of Karnak · Luxor
+            </span>
+
+            <FiMapPin className="text-xl text-primary transition-all duration-1000 group-hover:-translate-x-10 group-hover:scale-125" />
+          </div></Link>
       </div>
     </section>
   );

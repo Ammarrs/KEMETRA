@@ -1,6 +1,13 @@
+import { useAuth } from "../../../../context/Authentication/authContext";
 
-const InputEmail = ({ email, setEmail, emailError, setEmailError, validateEmail }) => {
-
+const InputEmail = () => {
+  const {
+    email,
+    setEmail,
+    emailError,
+    setEmailError,
+    validateEmail,
+  } = useAuth();
 
   const handleBlur = () => {
     setEmailError(validateEmail(email));
