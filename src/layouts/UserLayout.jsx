@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -10,6 +11,7 @@ import Login from "../pages/Login";
 import CreateAccount from "../pages/CreateAccount";
 import Profile from "../pages/Profile";
 import Settings from "../pages/Settings";
+import ResetPassword from "../pages/ResetPassword";
 import NotFound from "../pages/404/NotFound";
 
 import Header from "../components/Header";
@@ -38,6 +40,7 @@ function UserLayout() {
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
           {/* 404 Fallback Page */}
           <Route path="*" element={<NotFound />} />
