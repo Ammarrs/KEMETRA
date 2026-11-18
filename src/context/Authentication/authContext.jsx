@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
   const [connect, setConnect] = useState(false);
   const navigate = useNavigate();
   const gologin = () => navigate("/login");
+  const goHome = () => navigate("/");
 
 
   const login = (userData, rememberMe) => {
@@ -19,6 +20,7 @@ export function AuthProvider({ children }) {
       localStorage.token = token;
     }
     // coll back
+    connect && goHome();
   };
   const logout = () => {
     localStorage.token = "";

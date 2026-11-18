@@ -7,20 +7,9 @@ const InputPassword = ({
   setPassword,
   passwordError,
   setPasswordError,
+  validatePassword,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-
-  const validatePassword = (value) => {
-    if (!value.trim()) {
-      return "Password is required";
-    }
-
-    if (value.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-
-    return "";
-  };
 
   const handleBlur = () => {
     setPasswordError(validatePassword(password));
