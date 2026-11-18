@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "../pages/Home";
@@ -9,9 +8,10 @@ import Story from "../pages/Story";
 import ExploreMap from "../pages/ExploreMap";
 import Login from "../pages/Login";
 import CreateAccount from "../pages/CreateAccount";
-import NotFound from "../pages/404/NotFound";
-import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
+import Settings from "../pages/Settings";
+import ResetPassword from "../pages/ResetPassword";
+import NotFound from "../pages/404/NotFound";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -22,21 +22,26 @@ function UserLayout() {
       <Header />
 
       <Routes>
+        {/* Main Pages */}
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/stories" element={<Story />} />
         <Route path="/map" element={<ExploreMap />} />
         <Route path="/explore-map" element={<ExploreMap />} />
+        <Route path="/timeline" element={<HistoryTimeline />} />
+
+        {/* Auth & User Account Pages */}
         <Route path="/login" element={<Login />} />
         <Route
           path="/create-account"
           element={<CreateAccount />}
         />
-        <Route path="/timeline" element={<HistoryTimeline />} />
-        <Route path="/settings" element={<Settings />} />
-
-        {/* Profile Page */}
         <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/reset-password"
+          element={<ResetPassword />}
+        />
 
         {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
