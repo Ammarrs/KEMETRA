@@ -1,5 +1,6 @@
 
 import { useState } from "react"
+import karnakImage from "../images/karnak-temple.jpg"
 
 function ResetPassword() {
   const [password, setPassword] = useState("")
@@ -33,7 +34,7 @@ function ResetPassword() {
           {/* Left Side - Karnak Image */}
           <div className="relative min-h-[400px] overflow-hidden rounded-lg bg-[#111827] lg:min-h-[480px]">
             <img
-              src="/images/karnak-hero.jpg"
+              src={karnakImage}
               alt="The columns of Karnak Temple in Luxor"
               className="absolute inset-0 h-full w-full object-cover"
             />
