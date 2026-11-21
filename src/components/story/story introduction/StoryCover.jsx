@@ -4,7 +4,7 @@ const StoryCover = () => {
       {/* Hero Image */}
       <div className="overflow-hidden rounded-sm bg-linear-to-br from-surface via-primary to-foreground">
         <img
-          src="story/592b737b45f754171d2663cd232cf9bd1602e461.jpg"
+          src="story/Pyramids.jpg"
           alt="The three great pyramids of Giza across the desert plateau"
           className="aspect-[2.92/1] w-full object-cover max-md:aspect-4/3"
         />

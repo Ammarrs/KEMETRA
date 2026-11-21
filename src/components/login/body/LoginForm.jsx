@@ -6,25 +6,34 @@ import { useState } from "react";
 import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
-  const [rememberMe, setRememberMe] = useState(false);
+  const {
+    login,
+    email,
+    setEmailError,
+    password,
+    setPasswordError,
+    rememberMe,
+    setRememberMe,
+    validateEmail,
+    validatePassword,
+  } = useAuth();
 
   const handleCheckbox = (e) => {
     setRememberMe(e.target.checked);
   };
 
-  const { login } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email && password && !passwordError && !emailError) {
-      login({ email, password }, rememberMe);
-    }
+    const emailValidation = validateEmail(email);
+    const passwordValidation = validatePassword(password);
+
+    setEmailError(emailValidation);
+    setPasswordError(passwordValidation);
+
+    if (emailValidation || passwordValidation) return;
+
+    login({ email, password }, rememberMe);
   };
   return (
     <section className="mx-auto w-full max-w-xl font-body border-2 border-border p-5 rounded-3xl shadow-2xl">
@@ -47,19 +56,9 @@ export default function LoginForm() {
       {/* Form */}
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Email */}
-        <InputEmail
-          email={email}
-          setEmail={setEmail}
-          emailError={emailError}
-          setEmailError={setEmailError}
-        />
+        <InputEmail />
         {/* Password */}
-        <InputPassword
-          password={password}
-          setPassword={setPassword}
-          passwordError={passwordError}
-          setPasswordError={setPasswordError}
-        />
+        <InputPassword />
         {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between gap-3">
           <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-foreground">

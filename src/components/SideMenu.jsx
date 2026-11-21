@@ -1,56 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Drawer } from "@heroui/react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import Timeline from "./../pages/Admin/Timeline";
+import { NavLink } from "react-router-dom";
 import Profile from "./Profile";
 
+const links = [
+  { id: 1, linkName: "Home", linkPath: "/", end: true },
+  { id: 2, linkName: "Explore Map", linkPath: "/map" },
+  { id: 3, linkName: "Timeline", linkPath: "/timeline" },
+  { id: 4, linkName: "Stories", linkPath: "/stories" },
+  { id: 5, linkName: "Settings", linkPath: "/settings" },
+];
+
 function SideMenu() {
-  const links = [
-    { id: 1, linkName: "Home", linkPath: "/" },
-    { id: 2, linkName: "Explore Map", linkPath: "/map" },
-    { id: 3, linkName: "Timeline", linkPath: "/timeline" },
-    { id: 4, linkName: "Stories", linkPath: "/stories" },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const close = () => setIsOpen(false);
+
   return (
-    <Drawer>
-      <Button className="border rounded bg-transparent py-1 px-2">
+    <Drawer isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Button
+        onPress={() => setIsOpen(true)}
+        aria-label="Open menu"
+        className="border rounded bg-transparent py-1 px-2"
+      >
         <CiMenuFries className="font-bold text-lg" />
       </Button>
+
       <Drawer.Backdrop>
         <Drawer.Content placement="right">
           <Drawer.Dialog>
             <Drawer.Header>
-              <Button slot="close" className="self-end bg-primary">
+              <Button slot="close" onPress={close} className="self-end bg-primary">
                 <IoClose />
               </Button>
               <Drawer.Heading className="text-3xl">Main Menu</Drawer.Heading>
             </Drawer.Header>
+
             <Drawer.Body className="flex flex-col gap-2 px-5 py-3">
-              <Link to="/" onClick={() => setIsOpen(false)}>
-                Home
-              </Link>
-
-              <Link to="/map" onClick={() => setIsOpen(false)}>
-                Explore Map
-              </Link>
-
-              <Link to="/timeline" onClick={() => setIsOpen(false)}>
-                Timeline
-              </Link>
-
-              <Link to="/stories" onClick={() => setIsOpen(false)}>
-                Stories
-              </Link>
-
-              <Link to="/settings" onClick={() => setIsOpen(false)}>
-                Settings
-              </Link>
+              {links.map(({ id, linkName, linkPath, end }) => (
+                <NavLink
+                  key={id}
+                  to={linkPath}
+                  end={end}
+                  onClick={close}
+                  className={({ isActive }) =>
+                    `rounded-md px-3 py-2 transition-colors ${
+                      isActive ? "active font-semibold" : "hover:text-primary"
+                    }`
+                  }
+                >
+                  {linkName}
+                </NavLink>
+              ))}
             </Drawer.Body>
+
             <Drawer.Footer>
               <div className="w-full pb-5">
-                <Profile/>
+                <Profile onNavigate={close} />
               </div>
             </Drawer.Footer>
           </Drawer.Dialog>

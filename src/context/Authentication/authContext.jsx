@@ -1,42 +1,108 @@
 import { createContext, useContext, useEffect, useState } from "react";
-let AuthContext = createContext();
+import { useNavigate } from "react-router-dom";
 
+import { validateEmail, validatePassword, } from "./authValidation";
+
+// Create Context
+const AuthContext = createContext(null);
+
+// Custom Hook
+export const useAuth = () => useContext(AuthContext);
+
+// Auth Provider
 export function AuthProvider({ children }) {
+  // Authentication States
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
   const [userError, setUserError] = useState("");
-  const [token, setToken] = useState(localStorage.token ? localStorage.token : '');
-  const [connect, setConnect] = useState(false);
 
+  const [token, setToken] = useState(() => localStorage.getItem("token") || "");
 
+  const [connected, setConnected] = useState(false);
+
+  // Form States
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [rememberMe, setRememberMe] = useState(false);
+
+  // Navigation
+  const navigate = useNavigate();
+
+  // Login
   const login = (userData, rememberMe) => {
-    setUser(userData);
+    // call back
+
     if (rememberMe) {
-      localStorage.token = token;
+      localStorage.setItem("token", token);
+      setToken(token || "");
     }
-    // coll back
+
+    if (connected) {
+      navigate("/");
+    }
   };
+
+  // Logout
   const logout = () => {
-    localStorage.token = "";
+    localStorage.removeItem("token");
     setToken("");
     setUser(null);
-    connect(false);
-  }
+    setConnected(false);
+    navigate("/login");
+  };
+
+  // Get User After Login
   const getUserAfterLogin = () => {
     if (token) {
-      // coll back
+      // call back
     }
-  }
+
+    setUserLoading(false);
+  };
+
+  // Check Authentication
   useEffect(() => {
     getUserAfterLogin();
-  }, [])
+  }, []);
+
+  // Context Value
+  const value = {
+    // Authentication
+    user,
+    setUser,
+    userLoading,
+    userError,
+    setUserError,
+    connected,
+    login,
+    logout,
+
+    // Email
+    email,
+    setEmail,
+    emailError,
+    setEmailError,
+    validateEmail,
+
+    // Password
+    password,
+    setPassword,
+    passwordError,
+    setPasswordError,
+    validatePassword,
+
+    // Remember Me
+    rememberMe,
+    setRememberMe,
+  };
+
   return (
-    <AuthContext.Provider value={{ login, user, token, connect, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
 }
-
-export default AuthContext;
-
-export const useAuth = () => useContext(AuthContext);

@@ -1,26 +1,18 @@
 
-import React, { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from "react";
+import { useAuth } from "../../../../context/Authentication/authContext";
+import { FiEyeOff } from 'react-icons/fi';
+import { FiEye } from 'react-icons/fi';
 
-const InputPassword = ({
-  password,
-  setPassword,
-  passwordError,
-  setPasswordError,
-}) => {
+const InputPassword = () => {
+  const {
+    password,
+    setPassword,
+    passwordError,
+    setPasswordError,
+    validatePassword,
+  } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-
-  const validatePassword = (value) => {
-    if (!value.trim()) {
-      return "Password is required";
-    }
-
-    if (value.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-
-    return "";
-  };
 
   const handleBlur = () => {
     setPasswordError(validatePassword(password));
