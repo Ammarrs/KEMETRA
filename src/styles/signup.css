@@ -1,0 +1,180 @@
+.kemetra-signup {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  color: #131c2b;
+  background: #fbf7ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.kemetra-signup * { box-sizing: border-box; }
+.kemetra-signup button, .kemetra-signup input { font: inherit; }
+.kemetra-signup button { cursor: pointer; }
+.kemetra-signup a { text-decoration: none; }
+.kemetra-signup button:focus-visible, .kemetra-signup a:focus-visible, .kemetra-signup input:focus-visible { outline: 2px solid #c69c4d; outline-offset: 3px; }
+.kemetra-signup button:disabled { opacity: .65; cursor: not-allowed; }
+.kemetra-signup { min-height: 100vh; background: #fbf7ee; }
+.kemetra-signup, .kemetra-signup .auth-main { user-select: none; -webkit-user-select: none; }
+.kemetra-signup input, .kemetra-signup textarea, .kemetra-signup [contenteditable="true"], .kemetra-signup .auth-main input, .kemetra-signup .auth-main textarea { user-select: text; -webkit-user-select: text; }
+.kemetra-signup img, .kemetra-signup .auth-main img { -webkit-user-drag: none; }
+.kemetra-signup .site-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  color: #fbf7ee;
+  background: #0c131f;
+  border-bottom: 0;
+  box-shadow: inset 0 -1px rgba(232, 220, 190, .14);
+}
+.kemetra-signup .nav-top { height: 88px; display: flex; align-items: center; justify-content: space-between; position: relative; padding: 0 48px; }
+.kemetra-signup .brand-logo { display: inline-flex; align-items: center; gap: 12px; min-width: max-content; color: #fbf7ee; }
+.kemetra-signup .brand-lockup { display: block; width: 161px; height: 36px; max-width: none; }
+.kemetra-signup .desktop-nav { display: flex; align-items: center; gap: 32px; white-space: nowrap; }
+.kemetra-signup .desktop-nav a, .kemetra-signup .tablet-nav a { color: #fbf7ee; font-size: 13px; line-height: 16px; transition: color .2s; }
+.kemetra-signup .desktop-nav a:hover, .kemetra-signup .tablet-nav a:hover, .kemetra-signup .mobile-dropdown a:hover, .kemetra-signup .footer-list a:hover, .kemetra-signup .footer-social a:hover { color: #c69c4d; }
+.kemetra-signup .header-actions { display: flex; align-items: center; gap: 22px; }
+.kemetra-signup .language-switch { display: flex; align-items: center; gap: 8px; white-space: nowrap; direction: ltr; }
+.kemetra-signup .language-switch button { border: none; background: transparent; padding: 0; color: #fbf7ee; font-size: 12px; }
+.kemetra-signup .language-switch-header button[lang="ar"] { font-family: Inter, sans-serif; font-size: 16px; }
+.kemetra-signup .language-switch-header button.selected { color: #c69c4d; font-weight: 700; }
+.kemetra-signup .language-switch span { color: #c7c1b4; font-size: 12px; }
+.kemetra-signup .language-switch button:hover { color: #c69c4d; }
+.kemetra-signup .language-switch-footer button { font-size: 13px; }
+.kemetra-signup .language-switch-footer button.selected { font-weight: 400; }
+.kemetra-signup .sound-status { display: flex; align-items: center; gap: 7px; color: #c7c1b4; font-size: 11px; white-space: nowrap; background: transparent; border: 0; padding: 0; }
+.kemetra-signup .sound-status:hover { color: #c69c4d; }
+.kemetra-signup .sound-message { position: fixed; bottom: 20px; left: 50%; z-index: 40; transform: translateX(-50%); max-width: calc(100vw - 40px); border: 1px solid #c69c4d; border-radius: 4px; padding: 12px 16px; background: #0c131f; color: #fbf7ee; font-size: 13px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,.15); }
+.kemetra-signup .sound-icon { display: block; position: relative; width: 16px; height: 16px; overflow: hidden; flex-shrink: 0; }
+.kemetra-signup .sound-icon img, .kemetra-signup .sound-icon svg { display: block; width: 16px; height: 16px; max-width: none; }
+.kemetra-signup .header-signin { display: flex; align-items: center; justify-content: center; border: 1px solid #c69c4d; height: 36px; padding: 0 16px; border-radius: 4px; font-size: 12px; color: #c69c4d; white-space: nowrap; transition: background .2s; }
+.kemetra-signup .header-signin:hover { background: rgba(198,156,77,.1); }
+.kemetra-signup .nav-bottom, .kemetra-signup .menu-toggle, .kemetra-signup .mobile-dropdown, .kemetra-signup .compact-actions { display: none; }
+.kemetra-signup .auth-main { padding: 56px 48px 72px; background: #fbf7ee; }
+.kemetra-signup .auth-layout { display: grid; grid-template-columns: minmax(0, 668fr) minmax(0, 604fr); align-items: start; gap: 72px; }
+.kemetra-signup .hero-card { position: relative; width: 100%; height: 850px; overflow: hidden; background: #0c131f; border-radius: 4px; }
+.kemetra-signup .hero-picture { display: block; position: absolute; left: 0; top: 0; width: calc(200% + 8px); height: 100%; }
+.kemetra-signup .hero-picture img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.kemetra-signup .hero-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12,19,31,.0313726), rgba(12,19,31,.92549)); pointer-events: none; }
+.kemetra-signup .hero-copy { position: absolute; left: 32px; right: 32px; bottom: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.kemetra-signup .eyebrow { color: #c69c4d; font-size: 11px; font-weight: 700; line-height: 16px; letter-spacing: 1.32px; text-transform: uppercase; }
+.kemetra-signup .hero-eyebrow { margin: 0; }
+.kemetra-signup .hero-desktop-title, .kemetra-signup .hero-tablet-title { margin: 0; font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 40px; line-height: 50px; color: #fbf7ee; }
+.kemetra-signup .hero-tablet-title { display: none; }
+.kemetra-signup .hero-description { margin: 0; font-size: 15px; line-height: 24px; color: #c7c1b4; }
+.kemetra-signup .hero-annotation { display: flex; align-items: center; justify-content: space-between; width: 100%; font-size: 11px; line-height: 18px; color: #fbf7ee; }
+.kemetra-signup .hero-annotation:hover span { text-decoration: underline; text-decoration-thickness: 1px; }
+.kemetra-signup .hero-annotation img { display: block; height: 16px; width: 16px; flex-shrink: 0; }
+.kemetra-signup .auth-form { width: 100%; min-width: 0; }
+.kemetra-signup .form-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 20px; }
+.kemetra-signup .intro-label { width: 100%; margin: 0; color: #4e4638; font-size: 11px; line-height: 16px; font-weight: 600; }
+.kemetra-signup .form-intro h1 { width: 100%; margin: 0; color: #131c2b; font-family: "Playfair Display", Georgia, serif; font-size: 40px; font-weight: 600; line-height: 50px; }
+.kemetra-signup .form-intro > p:last-child { width: 100%; margin: 0; color: #4e4638; font-size: 15px; line-height: 24px; }
+.kemetra-signup .auth-form form { width: 100%; }
+.kemetra-signup .form-fields { display: flex; flex-direction: column; gap: 20px; }
+.kemetra-signup .form-field { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.kemetra-signup .form-field label { font-size: 13px; line-height: 20px; font-weight: 600; color: #131c2b; }
+.kemetra-signup .field-box { display: flex; align-items: center; gap: 12px; width: 100%; height: 53px; padding: 0 14px; background: #f3ebdd; border: .5px solid rgba(198,156,77,.35); border-radius: 4px; transition: border-color .2s; }
+.kemetra-signup .field-box:focus-within { border-color: #c69c4d; }
+.kemetra-signup .field-box input { width: 100%; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: #131c2b; font-size: 15px; line-height: 24px; }
+.kemetra-signup .field-box input::placeholder { color: #4e4638; opacity: 1; }
+.kemetra-signup .field-box input:-webkit-autofill { -webkit-text-fill-color: #131c2b; box-shadow: 0 0 0 40px #f3ebdd inset; }
+.kemetra-signup .password-toggle { flex-shrink: 0; border: 0; background: transparent; padding: 4px 0; font-size: 13px; font-weight: 600; line-height: 20px; color: #131c2b; }
+.kemetra-signup .field-help { margin: 0; color: #4e4638; font-size: 13px; line-height: 20px; }
+.kemetra-signup .field-error { border: 1px solid #b04b3d; }
+.kemetra-signup .field-error-message { margin: 0; color: #a03e30; font-size: 12px; line-height: 18px; }
+.kemetra-signup .updates-option { display: flex; align-items: center; gap: 12px; margin-top: 20px; color: #4e4638; font-size: 13px; line-height: 20px; cursor: pointer; }
+.kemetra-signup .updates-option input { appearance: none; flex-shrink: 0; width: 20px; height: 20px; margin: 0; background: #fbf7ee; border: 1px solid #4e4638; border-radius: 3px; cursor: pointer; }
+.kemetra-signup .updates-option input:checked { background: #c69c4d; border-color: #c69c4d; box-shadow: inset 0 0 0 4px #fbf7ee; }
+.kemetra-signup .primary-button, .kemetra-signup .outline-button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; padding: 14px; border-radius: 4px; color: #0c131f; font-size: 13px; line-height: 20px; font-weight: 600; text-align: center; }
+.kemetra-signup .primary-button { margin-top: 20px; border: 1px solid #c69c4d; background: #c69c4d; transition: background .2s; }
+.kemetra-signup .primary-button:hover { background: #b58b3e; }
+.kemetra-signup .existing-account { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+.kemetra-signup .existing-account p { width: 100%; margin: 0; color: #4e4638; font-size: 13px; line-height: 20px; text-align: center; }
+.kemetra-signup .outline-button { min-height: 50px; border: 1px solid #c69c4d; background: transparent; transition: background .2s; }
+.kemetra-signup .outline-button:hover { background: rgba(198,156,77,.1); }
+.kemetra-signup .form-reassurance { margin: 20px 0 0; color: #4e4638; font-size: 13px; line-height: 20px; }
+.kemetra-signup .form-notice { margin: 18px 0 0; padding: 12px 14px; background: #f3ebdd; border-left: 3px solid #c69c4d; color: #131c2b; font-size: 13px; line-height: 20px; }
+.kemetra-signup .site-footer { padding: 64px 48px 28px; background: #0c131f; color: #fbf7ee; }
+.kemetra-signup .footer-content { display: grid; grid-template-columns: minmax(0, 420fr) minmax(0, 398fr) minmax(0, 398fr); gap: 64px; }
+.kemetra-signup .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.kemetra-signup .footer-brand p { margin: 0; color: #c7c1b4; font-size: 15px; line-height: 24px; }
+.kemetra-signup .footer-brand p.eyebrow { color: #c69c4d; font-size: 11px; line-height: 16px; }
+.kemetra-signup .footer-directories { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; }
+.kemetra-signup .footer-list { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.kemetra-signup .footer-list h2, .kemetra-signup .footer-social h2 { margin: 0; }
+.kemetra-signup .footer-list a { color: #fbf7ee; font-size: 13px; line-height: 20px; transition: color .2s; }
+.kemetra-signup .footer-social { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.kemetra-signup .footer-social a, .kemetra-signup .footer-social p { margin: 0; color: #fbf7ee; font-size: 13px; line-height: 16px; }
+.kemetra-signup .footer-social .language-switch { line-height: 16px; }
+.kemetra-signup .footer-social p.social-details { color: #c7c1b4; line-height: 20px; }
+.kemetra-signup .footer-bottom { margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(232,220,190,.14); }
+.kemetra-signup .footer-bottom p { margin: 0; color: #c7c1b4; font-size: 11px; line-height: 18px; }
+.kemetra-signup .footer-bottom p + p { margin-top: 12px; }
+@media (max-width: 1250px) and (min-width: 1024px) {
+.kemetra-signup .nav-top, .kemetra-signup .auth-main, .kemetra-signup .site-footer { padding-left: 32px; padding-right: 32px; }
+.kemetra-signup .auth-layout { gap: 36px; }
+.kemetra-signup .desktop-nav { gap: 18px; }
+.kemetra-signup .header-actions { gap: 14px; }
+.kemetra-signup .footer-content { gap: 32px; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr); }
+.kemetra-signup .footer-directories { gap: 20px; }
+}
+@media (max-width: 1023px) {
+.kemetra-signup .nav-top { height: 73px; padding: 0 30px; }
+.kemetra-signup .desktop-nav { display: none; }
+.kemetra-signup .header-actions { gap: 20px; }
+.kemetra-signup .menu-toggle { display: flex; align-items: center; justify-content: center; width: 26px; height: 36px; padding: 0; background: transparent; border: 0; color: #fbf7ee; }
+.kemetra-signup .menu-toggle svg { width: 20px; height: 20px; }
+.kemetra-signup .nav-bottom { display: block; min-height: 43px; border-top: 1px solid rgba(232,220,190,.14); }
+.kemetra-signup .tablet-nav { display: flex; align-items: center; gap: 32px; height: 42px; padding: 0 30px; }
+.kemetra-signup .mobile-dropdown { position: absolute; top: 100%; left: 0; right: 0; z-index: 30; flex-direction: column; gap: 16px; padding: 20px 30px; background: #0c131f; border-top: 1px solid rgba(232,220,190,.14); box-shadow: 0 15px 30px rgba(0,0,0,.18); }
+.kemetra-signup .menu-open .mobile-dropdown { display: flex; }
+.kemetra-signup .mobile-dropdown a { color: #fbf7ee; font-size: 13px; }
+.kemetra-signup .auth-main { min-height: 1244px; padding: 32px 30px 42px; }
+.kemetra-signup .auth-layout { display: flex; flex-direction: column; gap: 30px; }
+.kemetra-signup .hero-card { height: 220px; flex-shrink: 0; }
+.kemetra-signup .hero-picture { width: 100%; }
+.kemetra-signup .hero-copy { left: 30px; right: 30px; bottom: 30px; gap: 16px; }
+.kemetra-signup .hero-desktop-title, .kemetra-signup .hero-description { display: none; }
+.kemetra-signup .hero-tablet-title { display: block; font-size: 26px; line-height: 36px; }
+.kemetra-signup .auth-form { width: min(100%, 560px); margin: 0 auto; }
+.kemetra-signup .site-footer { min-height: 707px; padding: 48px 30px 28px; }
+.kemetra-signup .footer-content { display: flex; flex-direction: column; gap: 32px; }
+.kemetra-signup .footer-brand { max-width: 100%; }
+.kemetra-signup .footer-directories { width: 100%; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.kemetra-signup .footer-social { gap: 16px; }
+}
+@media (max-width: 640px) {
+.kemetra-signup .nav-top { height: 72px; padding: 0 20px; }
+.kemetra-signup .brand-logo { gap: 10px; }
+.kemetra-signup .brand-lockup { width: 161px; height: 36px; }
+.kemetra-signup .header-actions > .language-switch, .kemetra-signup .header-actions > .sound-status, .kemetra-signup .header-signin { display: none; }
+.kemetra-signup .nav-bottom { display: flex; height: 44px; min-height: 44px; align-items: center; padding: 0 20px; }
+.kemetra-signup .compact-actions { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 10px; }
+.kemetra-signup .compact-actions .language-switch button { font-size: 12px; line-height: 16px; color: #c7c1b4; }
+.kemetra-signup .compact-actions .language-switch button.selected { color: #c69c4d; font-weight: 700; }
+.kemetra-signup .compact-actions .sound-status { font-size: 11px; color: #c7c1b4; }
+.kemetra-signup .compact-actions .sound-icon { width: 14px; height: 14px; }
+.kemetra-signup .compact-actions .sound-icon img, .kemetra-signup .compact-actions .sound-icon svg { width: 14px; height: 14px; }
+.kemetra-signup .tablet-nav { display: none; }
+.kemetra-signup .auth-main { min-height: 1224px; padding: 32px 20px 34px; }
+.kemetra-signup .auth-layout { gap: 32px; }
+.kemetra-signup .hero-card { height: 150px; }
+.kemetra-signup .hero-picture img { object-position: center; }
+.kemetra-signup .hero-copy { left: 20px; right: 20px; bottom: 17px; }
+.kemetra-signup .hero-eyebrow, .kemetra-signup .hero-tablet-title { display: none; }
+.kemetra-signup .hero-annotation { font-size: 11px; line-height: 16px; }
+.kemetra-signup .auth-form { width: 100%; }
+.kemetra-signup .form-intro h1 { font-size: 30px; line-height: 40px; }
+.kemetra-signup .form-intro > p:last-child { font-size: 16px; line-height: 26px; }
+.kemetra-signup .form-field label { font-size: 13px; }
+.kemetra-signup .updates-option { align-items: flex-start; }
+.kemetra-signup .site-footer { min-height: 757px; padding: 48px 20px 28px; }
+.kemetra-signup .footer-content { gap: 32px; }
+.kemetra-signup .footer-brand { gap: 24px; }
+.kemetra-signup .footer-brand p { font-size: 15px; line-height: 24px; }
+.kemetra-signup .footer-directories { gap: 20px; }
+.kemetra-signup .footer-list { gap: 20px; }
+.kemetra-signup .footer-social { gap: 16px; }
+.kemetra-signup .footer-bottom p { font-size: 11px; line-height: 18px; }
+}
+.kemetra-signup[dir="rtl"] .hero-copy, .kemetra-signup[dir="rtl"] .form-intro, .kemetra-signup[dir="rtl"] .footer-brand, .kemetra-signup[dir="rtl"] .footer-list, .kemetra-signup[dir="rtl"] .footer-social { align-items: flex-start; }
+.kemetra-signup[dir="rtl"] .form-notice { border-left: 0; border-right: 3px solid #c69c4d; }
