@@ -60,9 +60,13 @@
 .kemetra-signup .hero-desktop-title, .kemetra-signup .hero-tablet-title { margin: 0; font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 40px; line-height: 50px; color: #fbf7ee; }
 .kemetra-signup .hero-tablet-title { display: none; }
 .kemetra-signup .hero-description { margin: 0; font-size: 15px; line-height: 24px; color: #c7c1b4; }
-.kemetra-signup .hero-annotation { display: flex; align-items: center; justify-content: space-between; width: 100%; font-size: 11px; line-height: 18px; color: #fbf7ee; }
-.kemetra-signup .hero-annotation:hover span { text-decoration: underline; text-decoration-thickness: 1px; }
-.kemetra-signup .hero-annotation img { display: block; height: 16px; width: 16px; flex-shrink: 0; }
+.kemetra-signup .hero-annotation { display: block; width: 100%; padding: 20px 8px; border-radius: 32px; transition: background-color .5s, color .5s; }
+.kemetra-signup .hero-annotation:hover { background-color: rgba(167, 125, 50, .5); }
+.kemetra-signup .hero-annotation-inner { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(198, 156, 77, .22); color: rgba(212, 175, 55, .75); }
+.kemetra-signup .hero-annotation span { font-size: 12px; font-weight: 500; line-height: 18px; transition: transform 1s; }
+.kemetra-signup .hero-annotation:hover span { transform: translateX(40px) scale(1.25); }
+.kemetra-signup .hero-annotation img { display: block; height: 20px; width: 20px; flex-shrink: 0; transition: transform 1s; }
+.kemetra-signup .hero-annotation:hover img { transform: translateX(-40px) scale(1.25); }
 .kemetra-signup .auth-form { width: 100%; min-width: 0; }
 .kemetra-signup .form-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 20px; }
 .kemetra-signup .intro-label { width: 100%; margin: 0; color: #4e4638; font-size: 11px; line-height: 16px; font-weight: 600; }
@@ -161,7 +165,7 @@
 .kemetra-signup .hero-picture img { object-position: center; }
 .kemetra-signup .hero-copy { left: 20px; right: 20px; bottom: 17px; }
 .kemetra-signup .hero-eyebrow, .kemetra-signup .hero-tablet-title { display: none; }
-.kemetra-signup .hero-annotation { font-size: 11px; line-height: 16px; }
+.kemetra-signup .hero-annotation span { font-size: 11px; line-height: 16px; }
 .kemetra-signup .auth-form { width: 100%; }
 .kemetra-signup .form-intro h1 { font-size: 30px; line-height: 40px; }
 .kemetra-signup .form-intro > p:last-child { font-size: 16px; line-height: 26px; }

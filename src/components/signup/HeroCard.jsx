@@ -14,8 +14,10 @@ export default function HeroCard({ t }) {
         <h2 className="hero-tablet-title">{t.tabletHero}</h2>
         <p className="hero-description">{t.heroDescription}</p>
         <Link className="hero-annotation" to={paths.exploreMap} aria-label={`${t.location} — ${t.exploreMap}`}>
-          <span>{t.location}</span>
-          <img draggable={false} src="/images/map-pin.svg" alt="" aria-hidden="true" />
+          <div className="hero-annotation-inner">
+            <span>{t.location}</span>
+            <img draggable={false} src="/images/map-pin.svg" alt="" aria-hidden="true" />
+          </div>
         </Link>
       </div>
     </section>
