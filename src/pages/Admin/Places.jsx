@@ -20,6 +20,8 @@ const Places = () => {
   const [filters, setFilters] = useState({ search: "", era: "all", type: "all", status: "all", order: "az" });
   const [requestedPage, setPage] = useState(1);
   const [draft, setDraft] = useState(null);
+  // Plain null-check (no optional chaining) so the React Compiler never reads `draft.id` while draft is null.
+  const editingId = draft === null ? null : draft.id;
 
   const filtered = useMemo(() => {
     const query = filters.search.trim().toLowerCase();
@@ -47,7 +49,7 @@ const Places = () => {
   const closeEditor = () => setDraft(null);
 
   const savePlace = () => {
-    if (!draft.name.trim() || !draft.location.trim()) return;
+    if (draft === null || !draft.name.trim() || !draft.location.trim()) return;
     const { isNew, ...record } = draft;
     setPlaces((current) =>
       isNew
@@ -62,12 +64,12 @@ const Places = () => {
         place.id === id ? { ...place, status: place.status === "Archived" ? "Draft" : "Archived" } : place,
       ),
     );
-    if (draft?.id === id) closeEditor();
+    if (editingId === id) closeEditor();
   };
   const deletePlace = (id) => {
     if (!window.confirm("Delete this place from the local prototype?")) return;
     setPlaces((current) => current.filter((place) => place.id !== id));
-    if (draft?.id === id) closeEditor();
+    if (editingId === id) closeEditor();
   };
 
   return (
