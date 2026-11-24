@@ -1,199 +1,178 @@
-import { useMemo, useState } from "react";
-import { FiPlus } from "react-icons/fi";
-import AudioFilters from "../../components/admin/audio/AudioFilters";
-import AudioList from "../../components/admin/audio/AudioList";
+import { useMemo, useRef, useState } from "react";
+import AdminPageHeader from "../../components/admin/common/AdminPageHeader";
+import AdminPageShell from "../../components/admin/common/AdminPageShell";
+import AdminPagination from "../../components/admin/common/AdminPagination";
 import AudioEditor from "../../components/admin/audio/AudioEditor";
+import MediaFilters from "../../components/admin/audio/MediaFilters";
+import MediaList from "../../components/admin/audio/MediaList";
+import MediaNotice from "../../components/admin/audio/MediaNotice";
+import MediaTabs from "../../components/admin/audio/MediaTabs";
+import ModelEditor from "../../components/admin/audio/ModelEditor";
+import { emptyAudio, emptyModel, initialMedia, shortName } from "../../data/adminMedia";
 
-const initialRecords = [
-  {
-    id: 1,
-    title: "Giza — landscape narration",
-    place: "Giza Pyramids",
-    story: "Giza: a horizon in stone",
-    language: "English",
-    transcriptStatus: "Transcript draft",
-    status: "Processing",
-    audioUrl: "",
-    transcript:
-      "Look beyond the familiar silhouette to the landscape, craft and memory of the Giza Plateau.\n\nSample transcript draft. Align the complete text with the approved recording before publication.",
-  },
-  {
-    id: 2,
-    title: "A sanctuary above the city",
-    place: "The Hanging Church",
-    story: "A sanctuary above the city",
-    language: "English",
-    transcriptStatus: "Transcript reviewed",
-    status: "Available",
-    audioUrl: "",
-    transcript: "A sample narration for the related Coptic heritage story.",
-  },
-  {
-    id: 3,
-    title: "The art of the courtyard",
-    place: "Sultan Hassan",
-    story: "The art of the courtyard",
-    language: "Arabic",
-    transcriptStatus: "Transcript missing",
-    status: "Error",
-    audioUrl: "",
-    transcript: "",
-  },
-];
-const emptyRecord = {
-  id: null,
-  title: "Untitled narration",
-  place: "",
-  story: "",
-  language: "English",
-  transcriptStatus: "Transcript draft",
-  status: "Processing",
-  audioUrl: "",
-  transcript: "",
-  isNew: true,
+const PER_PAGE = 6;
+
+const sorters = {
+  audio: () => 0, // catalog order: each narration is listed ahead of its 3D tour
+  model: (a, b) => (a.kind === b.kind ? 0 : a.kind === "model" ? -1 : 1),
+  title: (a, b) => a.title.localeCompare(b.title),
 };
 
-const AudioRecords = () => {
-  const [records, setRecords] = useState(initialRecords);
-  const [filters, setFilters] = useState({
-    search: "",
-    status: "all",
-    language: "all",
-    order: "title",
-  });
-  const [selectedId, setSelectedId] = useState(1);
-  const [draft, setDraft] = useState({ ...initialRecords[0] });
+const firstOf = (list, kind) => list.find((record) => record.kind === kind);
+
+// Combined "Audio & 3D Management" page.
+// `initialTab` lets the 3D Experiences route open on the 3D models tab.
+const AudioRecords = ({ initialTab = "all" }) => {
+  const [records, setRecords] = useState(initialMedia);
+  const [tab, setTab] = useState(initialTab);
+  const [filters, setFilters] = useState({ search: "", status: "all", language: "all", order: "audio" });
+  const [requestedPage, setPage] = useState(1);
+
+  const [audioId, setAudioId] = useState(firstOf(initialMedia, "audio").id);
+  const [audioDraft, setAudioDraft] = useState({ ...firstOf(initialMedia, "audio") });
+  const [modelId, setModelId] = useState(firstOf(initialMedia, "model").id);
+  const [modelDraft, setModelDraft] = useState({ ...firstOf(initialMedia, "model") });
+
+  const audioPanel = useRef(null);
+  const modelPanel = useRef(null);
+
+  const counts = useMemo(() => {
+    const audio = records.filter((record) => record.kind === "audio").length;
+    return { audio, model: records.length - audio };
+  }, [records]);
+
   const filtered = useMemo(() => {
     const query = filters.search.trim().toLowerCase();
     return records
       .filter(
         (record) =>
-          (!query ||
-            `${record.title} ${record.place} ${record.story}`
-              .toLowerCase()
-              .includes(query)) &&
+          (tab === "all" || record.kind === tab) &&
+          (!query || `${record.title} ${record.place} ${record.story}`.toLowerCase().includes(query)) &&
           (filters.status === "all" || record.status === filters.status) &&
           (filters.language === "all" || record.language === filters.language),
       )
-      .sort((a, b) =>
-        filters.order === "place"
-          ? a.place.localeCompare(b.place)
-          : filters.order === "status"
-            ? a.status.localeCompare(b.status)
-            : a.title.localeCompare(b.title),
-      );
-  }, [records, filters]);
-  const changeFilter = (name, value) =>
+      .sort(sorters[filters.order]);
+  }, [records, tab, filters]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+  const page = Math.min(requestedPage, totalPages);
+  const start = (page - 1) * PER_PAGE;
+  const visible = filtered.slice(start, start + PER_PAGE);
+
+  const changeFilter = (name, value) => {
     setFilters((current) => ({ ...current, [name]: value }));
-  const editRecord = (id) => {
-    const record = records.find((item) => item.id === id);
-    setSelectedId(id);
-    setDraft({ ...record, isNew: false });
+    setPage(1);
   };
-  const saveRecord = () => {
-    if (!draft.title.trim() || !draft.place.trim()) return;
-    if (draft.isNew) {
-      const saved = { ...draft, id: Date.now(), isNew: undefined };
-      setRecords((current) => [saved, ...current]);
-      setSelectedId(saved.id);
-      setDraft({ ...saved });
+  const changeTab = (next) => {
+    setTab(next);
+    setPage(1);
+  };
+  const reveal = (ref) =>
+    requestAnimationFrame(() => ref.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+
+  const editRecord = (record) => {
+    if (record.kind === "audio") {
+      setAudioId(record.id);
+      setAudioDraft({ ...record });
+      reveal(audioPanel);
     } else {
-      setRecords((current) =>
-        current.map((record) =>
-          record.id === selectedId ? { ...draft, isNew: undefined } : record,
-        ),
-      );
+      setModelId(record.id);
+      setModelDraft({ ...record, steps: record.steps.map((step) => ({ ...step })) });
+      reveal(modelPanel);
     }
   };
-  const newRecord = () => {
-    setSelectedId(null);
-    setDraft({ ...emptyRecord });
+  const addMedia = () => {
+    if (tab === "model") {
+      setModelId(null);
+      setModelDraft({ ...emptyModel });
+      reveal(modelPanel);
+    } else {
+      setAudioId(null);
+      setAudioDraft({ ...emptyAudio });
+      reveal(audioPanel);
+    }
   };
+
+  const save = (draft, setId, setDraft) => {
+    // An edited 3D record drops its sample list note so it is recomputed from the form.
+    const { isNew, ...record } = { ...draft };
+    delete record.listNote;
+    record.id = isNew ? Date.now() : draft.id;
+    setRecords((current) =>
+      isNew ? [record, ...current] : current.map((item) => (item.id === record.id ? record : item)),
+    );
+    setId(record.id);
+    setDraft({ ...record });
+  };
+  const cancel = (id, kind, setDraft) => {
+    const original = records.find((record) => record.id === id) ?? firstOf(records, kind);
+    if (original) setDraft({ ...original });
+  };
+
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto w-full max-w-[1440px] px-4 py-7 sm:px-6 lg:px-8">
-        <p className="mb-6 font-body text-xs text-muted-foreground">
-          Admin / Audio Records
-        </p>
-        <header>
-          <p className="font-body text-[0.65rem] font-extrabold uppercase tracking-[0.25em] text-primary">
-            The media catalog
-          </p>
-          <h1 className="mt-2 font-display text-4xl font-semibold md:text-5xl">
-            Audio Management
-          </h1>
-          <p className="mt-3 font-body text-sm text-muted-foreground">
-            Manage narrated stories and place-linked audio records.
-          </p>
-          <div className="mt-6 flex items-end justify-between gap-4">
-            <div>
-              <p className="font-display text-2xl">18 audio records</p>
-              <p className="mt-1 font-body text-[0.67rem] text-muted-foreground">
-                Sample data · No live audio connected
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={newRecord}
-              className="inline-flex items-center gap-2 bg-primary px-4 py-2.5 font-body text-sm font-bold text-secondary hover:bg-primary-hover">
-              <FiPlus /> Add audio
-            </button>
-          </div>
-        </header>
-        <aside className="mt-6 border border-success/15 bg-success/10 px-4 py-3 font-body">
-          <p className="text-xs font-bold text-success">
-            Sample data · No live audio connected
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Availability and processing statuses are illustrative. Audio cannot
-            play and no files are uploaded.
-          </p>
-        </aside>
-        <AudioFilters filters={filters} onChange={changeFilter} />
-        <p className="mt-5 font-body text-xs text-muted-foreground">
-          Showing 1–{filtered.length} of 18 audio records · Sample data
-        </p>
-        <AudioList
-          records={filtered}
-          onEdit={editRecord}
-          onPreview={(id) => editRecord(id)}
-        />
-        <nav className="mt-5 flex gap-2" aria-label="Audio pagination">
-          <button
-            className="border border-border bg-card px-3 py-2 font-body text-xs opacity-30"
-            disabled>
-            Previous
-          </button>
-          <button className="size-9 border border-secondary bg-secondary font-body text-xs text-card">
-            1
-          </button>
-          <button className="size-9 border border-border bg-card font-body text-xs">
-            2
-          </button>
-          <button className="border border-border bg-card px-3 py-2 font-body text-xs">
-            Next
-          </button>
-        </nav>
-        <p className="mt-4 font-body text-[0.67rem] text-muted-foreground">
-          Page 1 of 3 · 6 records per page · Sample data
-        </p>
-        <AudioEditor
-          record={draft}
-          onChange={(name, value) =>
-            setDraft((current) => ({ ...current, [name]: value }))
-          }
-          onSave={saveRecord}
-          onCancel={() => {
-            const original = records.find((record) => record.id === selectedId);
-            setDraft(original ? { ...original } : null);
-          }}
-        />
-        <footer className="mt-10 border-t border-border py-5 font-body text-[0.65rem] text-muted-foreground">
-          KEMETRA · Curatorial workspace · Local interactive prototype. Connect
-          actions to the project audio API before production.
-        </footer>
+    <AdminPageShell
+      crumbs="Admin / Audio & 3D"
+      footer="KEMETRA · Curatorial workspace · Local interactive prototype. Connect actions to the project media API before production.">
+      <AdminPageHeader
+        eyebrow="The media catalog"
+        title="Audio & 3D Management"
+        description="Manage narrated stories, model references and place-linked tours."
+        count={`${records.length} media records`}
+        countNote={`${counts.audio} audio · ${counts.model} models · Sample data`}
+        actionLabel="Add media"
+        onAction={addMedia}
+      />
+      <MediaNotice />
+      <MediaTabs
+        active={tab}
+        onChange={changeTab}
+        tabs={[
+          { id: "all", label: "All media", count: records.length },
+          { id: "audio", label: "Audio", count: counts.audio },
+          { id: "model", label: "3D models", count: counts.model },
+        ]}
+      />
+      <MediaFilters filters={filters} onChange={changeFilter} />
+      <p className="mt-7 font-body text-sm text-muted-foreground" aria-live="polite">
+        {filtered.length === 0
+          ? "No matching records"
+          : `Showing ${start + 1}–${start + visible.length} of ${filtered.length} records`}{" "}
+        · Sample data
+      </p>
+      <MediaList records={visible} onEdit={editRecord} />
+      <AdminPagination
+        page={page}
+        totalPages={totalPages}
+        onChange={setPage}
+        label="Media pagination"
+        summary={`Page ${page} of ${totalPages} · ${PER_PAGE} records per page · Sample data`}
+      />
+
+      <p className="mt-8 font-body text-xs leading-5 text-muted-foreground">
+        Selected for editing below: {shortName(audioDraft)} and {shortName(modelDraft)}. Available
+        means sample catalog status, not a connected playable asset.
+      </p>
+      <div className="mt-5 grid items-start gap-6 lg:grid-cols-2">
+        <div ref={audioPanel} className="scroll-mt-6 min-w-0">
+          <AudioEditor
+            key={audioId ?? "new-audio"}
+            record={audioDraft}
+            onChange={(name, value) => setAudioDraft((current) => ({ ...current, [name]: value }))}
+            onSave={() => save(audioDraft, setAudioId, setAudioDraft)}
+            onCancel={() => cancel(audioId, "audio", setAudioDraft)}
+          />
+        </div>
+        <div ref={modelPanel} className="scroll-mt-6 min-w-0">
+          <ModelEditor
+            key={modelId ?? "new-model"}
+            record={modelDraft}
+            onChange={(name, value) => setModelDraft((current) => ({ ...current, [name]: value }))}
+            onSave={() => save(modelDraft, setModelId, setModelDraft)}
+            onCancel={() => cancel(modelId, "model", setModelDraft)}
+          />
+        </div>
       </div>
-    </main>
+    </AdminPageShell>
   );
 };
 export default AudioRecords;
