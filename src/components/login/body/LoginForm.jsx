@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import InputEmail from './form/InputEmail';
 import InputPassword from "./form/InputPassword";
 import { FiArrowRight, FiArrowUpRight, FiLock, } from "react-icons/fi";
-import { useState } from "react";
 import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {

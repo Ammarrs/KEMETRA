@@ -6,6 +6,7 @@ import AmbientMusicSettings from './../components/settings/AmbientMusicSettings'
 import PlaybackSettings from './../components/settings/PlaybackSettings';
 import AccessibilitySettings from './../components/settings/AccessibilitySettings';
 import PrivacySettings from './../components/settings/PrivacySettings';
+import ThemeSettings from '../components/settings/ThemeSettings';
 
 const Settings = () => {
   const [activeSection, setActiveSection] = useState("account");
@@ -34,6 +35,7 @@ const Settings = () => {
           <div className="min-w-0 space-y-4">
             {activeSection === "account" && <AccountSettings />}
             {activeSection === "language" && <LanguageSettings />}
+            {activeSection === "theme" && <ThemeSettings />}
             {activeSection === "ambient" && <AmbientMusicSettings />}
             {activeSection === "playback" && <PlaybackSettings />}
             {activeSection === "accessibility" && <AccessibilitySettings />}

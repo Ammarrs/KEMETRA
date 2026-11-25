@@ -18,7 +18,7 @@ const SectionIntroduction = () => {
           to="/"
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 text-[11px] font-semibold text-ink transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
+          className="group inline-flex items-center gap-2 text-[11px] font-semibold text-ink text-foreground transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
         >
           Browse all stories
           <FiArrowRight

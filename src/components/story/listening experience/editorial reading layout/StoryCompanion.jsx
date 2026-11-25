@@ -26,7 +26,7 @@ const StoryCompanion = () => {
 
       {/* In This Story */}
       <div className="rounded-lg border border-ink/10 bg-sand p-6">
-        <h3 className="mb-7 text-[10px] font-bold uppercase tracking-[0.2em] text-ink">
+        <h3 className="mb-7 text-[10px] font-bold uppercase tracking-[0.2em] text-ink text-foreground">
           In this story
         </h3>
 
@@ -37,11 +37,11 @@ const StoryCompanion = () => {
               key={item.number}
               className="group flex items-start gap-4 rounded-sm focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
             >
-              <span className="font-heading text-[15px] font-semibold leading-5 text-gold">
+              <span className="font-heading text-[15px] font-semibold leading-5 text-gold ">
                 {item.number}
               </span>
 
-              <span className="text-[12px] leading-[1.6] text-ink transition-colors group-hover:text-gold">
+              <span className="text-[12px] leading-[1.6] text-ink transition-colors group-hover:text-gold text-foreground">
                 {item.title}
               </span>
             </Link>
@@ -57,7 +57,7 @@ const StoryCompanion = () => {
           className="mb-5 text-gold"
         />
 
-        <h3 className="mb-5 font-heading text-[24px] font-semibold leading-tight text-ink">
+        <h3 className="mb-5 font-heading text-[24px] font-semibold leading-tight text-ink text-foreground">
           Keep your sense of place.
         </h3>
 
@@ -79,7 +79,7 @@ const StoryCompanion = () => {
           to="/"
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 text-[11px] font-semibold text-ink transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
+          className="group inline-flex items-center gap-2 text-[11px] font-semibold text-ink transition-colors text-foreground hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
         >
           Return to Giza on the map
 
@@ -92,7 +92,7 @@ const StoryCompanion = () => {
 
       {/* Explore Thoughtfully */}
       <div className="rounded-lg border border-ink/10 bg-sand p-6">
-        <h3 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-ink">
+        <h3 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-ink text-foreground">
           Explore thoughtfully
         </h3>
 

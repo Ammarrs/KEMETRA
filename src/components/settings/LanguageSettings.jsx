@@ -1,12 +1,11 @@
-import { useState } from "react";
 import SettingsCard from "./SettingsCard";
 import { FiGlobe } from "react-icons/fi";
+import { useSettings } from './../../context/Settings/SettingsContext';
+
 export default function LanguageSettings() {
-  const [language, setLanguage] = useState(localStorage.language ? localStorage.language : "English");
-  const languageOnClick = (item) => {
-    setLanguage(item);
-    localStorage.language = item;
-  }
+  const { language, setLanguage } = useSettings();
+
+
   return (
     <SettingsCard
       title="Language"
@@ -18,7 +17,7 @@ export default function LanguageSettings() {
           <button
             key={item}
             type="button"
-            onClick={() => languageOnClick(item)}
+            onClick={() => setLanguage(item)}
             aria-pressed={language === item}
             className={`min-w-28 rounded-lg border px-5 py-2.5 text-xs font-bold transition ${language === item
               ? "border-secondary bg-secondary text-background dark:border-primary dark:bg-primary dark:text-secondary"
