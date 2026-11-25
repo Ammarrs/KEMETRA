@@ -6,7 +6,7 @@ import ContinueDiscovering from '../components/story/ContinueDiscovering';
 const Story = () => {
   return (
     <div className='bg-background'>
-      <div className='px-12 py-8 '>
+      <div className='md:px-12 py-8 px-2'>
         <StoryIntroduction />
         <ListeningExperience />
       </div>

@@ -30,8 +30,7 @@ export default function LanguageSettings() {
       </div>
 
       <p className="mt-3 text-xs text-muted-foreground">
-        Selected language: {language}. Interface translation can be connected
-        to your app's i18n setup.
+        Selected language: {language}.
       </p>
     </SettingsCard>
   );
