@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
 import SettingsCard from "./SettingsCard";
 import SettingRow from "./SettingsRow";
 import Toggle from "./Toggle";
 import SelectControl from './SelectControl';
 import { FiEye } from 'react-icons/fi';
+import { useSettings } from './../../context/Settings/SettingsContext';
 export default function AccessibilitySettings() {
-  const [reducedMotion, setReducedMotion] = useState(localStorage.reducedMotion === "true");
-  const [contrast, setContrast] = useState(localStorage.contrast === "true");
-  const [textSize, setTextSize] = useState(localStorage.textSize ? localStorage.textSize : "100");
-  useEffect(() => {
-    localStorage.reducedMotion = reducedMotion;
-  }, [reducedMotion])
-  useEffect(() => {
-    localStorage.contrast = contrast;
-  }, [contrast])
-  useEffect(() => {
-    localStorage.textSize = textSize;
-  }, [textSize])
+  const {
+    reducedMotion,
+    setReducedMotion,
+    contrast,
+    setContrast,
+    textSize,
+    setTextSize,
+  } = useSettings();
   return (
     <SettingsCard
       title="Accessibility"

@@ -6,22 +6,17 @@ import SelectControl from './SelectControl';
 import {
   FiMusic,
 } from "react-icons/fi";
+import { useSettings } from './../../context/Settings/SettingsContext';
 export default function AmbientMusicSettings() {
-  const [enabled, setEnabled] = useState(localStorage.enabled !== "false");
-  const [volume, setVolume] = useState(localStorage.volume ? +localStorage.volume : 50);
-  const [track, setTrack] = useState(localStorage.track ? localStorage.track : "Ancient Egypt");
+  const {
+    enabled,
+    setEnabled,
+    track,
+    setTrack,
+    volume,
+    setVolume,
+  } = useSettings();
 
-  const selectOnChange = (value) => {
-    localStorage.track = value;
-    setTrack(() => (value))
-  }
-  const rangeOnChange = (value) => {
-    localStorage.volume = value;
-    setVolume(() => (value))
-  }
-  useEffect(() => {
-    localStorage.enabled = enabled;
-  }, [enabled])
   return (
     <SettingsCard
       title="Ambient Music"
@@ -50,7 +45,7 @@ export default function AmbientMusicSettings() {
             disabled={!enabled}
             label="Ambient track"
             value={track}
-            onChange={selectOnChange}
+            onChange={(value) => setTrack(value)}
             options={[
               { value: "ancientEgypt", label: "Ancient Egypt" },
               { value: "nileAtNight", label: "Nile at Night" },
@@ -76,7 +71,7 @@ export default function AmbientMusicSettings() {
           max="100"
           value={volume}
           disabled={!enabled}
-          onChange={(event) => rangeOnChange(Number(event.target.value))}
+          onChange={(e) => setVolume(+e.target.value)}
           className="mt-2 w-full accent-primary"
         />
 

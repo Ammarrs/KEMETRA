@@ -4,19 +4,20 @@ import SettingRow from "./SettingsRow";
 import Toggle from "./Toggle";
 import SelectControl from './SelectControl';
 import { FiPlay } from 'react-icons/fi';
+import { useSettings } from './../../context/Settings/SettingsContext';
+
 const PlaybackSettings = () => {
-  const [quality, setQuality] = useState(localStorage.quality ? localStorage.quality : "normal");
-  const [rememberPlayback, setRememberPlayback] = useState(localStorage.rememberPlayback !== "false");
-  const [captions, setCaptions] = useState(localStorage.captions === "true");
-  useEffect(() => {
-    localStorage.quality = quality;
-  }, [quality])
-  useEffect(() => {
-    localStorage.rememberPlayback = rememberPlayback;
-  }, [rememberPlayback])
-  useEffect(() => {
-    localStorage.captions = captions;
-  }, [captions])
+
+  const {
+    quality,
+    setQuality,
+    rememberPlayback,
+    setRememberPlayback,
+    captions,
+    setCaptions,
+  } = useSettings();
+
+
   return (
     <SettingsCard
       title="Playback"
