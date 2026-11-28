@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { Volume2, VolumeX } from "lucide-react";
 import BrandMark from "./BrandMark";
 import SideMenu from "./SideMenu";
+import LoginButton from "./LoginButton";
+import DashboardButton from "./DashboardButton";
 
 function Header() {
   const [sound, setSound] = useState(false);
-  const [isLogedin, setIsLogedin] = useState(false);
+  const [isLogedin, setIsLogedin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   const links = [
     { id: 1, linkName: "Home", linkPath: "/" },
@@ -54,21 +57,19 @@ function Header() {
             )}
             Ambient {sound ? "ON" : "OFF"}
           </button>
-
-          {isLogedin ? (
-            <Link
-              to="/profile"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-primary text-xs font-semibold text-primary"
-            >
-              AM
-            </Link>
+        </div> */}
+        <div className="login hidden lg:block">
+          {isLoggedin ? (
+            <div className="flex gap-5 items-center">
+              <Link to="/profile">
+                <div className="profile text-center border border-primary rounded-full p-2">
+                  <span className="text-primary">AM</span>
+                </div>
+              </Link>
+              {isAdmin && <DashboardButton />}
+            </div>
           ) : (
-            <Link
-              to="/login"
-              className="inline-flex h-9 items-center rounded border border-white/25 px-4 text-[13px] font-medium text-background transition-colors hover:border-gold hover:text-gold"
-            >
-              Login
-            </Link>
+            <LoginButton />
           )}
         </div>
 
