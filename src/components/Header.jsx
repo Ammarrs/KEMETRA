@@ -8,7 +8,7 @@ import DashboardButton from "./DashboardButton";
 
 function Header() {
   const [sound, setSound] = useState(false);
-  const [isLogedin, setIsLogedin] = useState(true);
+  const [isLoggedin, setIsLoggedin] = useState(true);
   const [isAdmin, setIsAdmin] = useState(true);
 
   const links = [
