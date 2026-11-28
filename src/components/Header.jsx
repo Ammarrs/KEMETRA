@@ -1,61 +1,63 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { HiOutlineSpeakerXMark, HiOutlineSpeakerWave } from "react-icons/hi2";
+import { Volume2, VolumeX } from "lucide-react";
 import BrandMark from "./BrandMark";
 import SideMenu from "./SideMenu";
 import LoginButton from "./LoginButton";
 import DashboardButton from "./DashboardButton";
 
 function Header() {
-<<<<<<< Updated upstream
+
   let [sound, setSound] = useState(true);
   let [isLoggedin, setIsLogedin] = useState(true);
   let [isAdmin, setIsAdmin] = useState(true);
-=======
-  const [sound, setSound] = useState(false);
-  const [isLoggedin, setIsLoggedin] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(true);
->>>>>>> Stashed changes
+
 
   const links = [
     { id: 1, linkName: "Home", linkPath: "/" },
-    { id: 2, linkName: "Explore Map", linkPath: "/map" },
+    { id: 2, linkName: "Explore Map", linkPath: "/explore-map" },
     { id: 3, linkName: "Timeline", linkPath: "/timeline" },
     { id: 4, linkName: "Stories", linkPath: "/stories" },
     { id: 5, linkName: "Settings", linkPath: "/settings" },
   ];
 
-  function handleSound() {
-    setSound(!sound);
-  }
-
   return (
-    <div className="bg-secondary px-12 py-6 flex justify-between items-center">
-      <BrandMark />
-      <div className="nav-links hidden lg:flex gap-5 items-center">
-        {links.map((link) => (
-          <NavLink
-            active
-            className="text-background"
-            key={link.id}
-            to={link.linkPath}
+    <header className="sticky top-0 z-50 border-b border-white/[0.13] bg-secondary">
+      <div className="mx-auto flex h-[87px] w-full max-w-[1440px] items-center justify-between px-6 md:px-12">
+        <BrandMark />
+
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          {links.map((link) => (
+            <NavLink
+              key={link.id}
+              to={link.linkPath}
+              end={link.linkPath === "/"}
+              className={({ isActive }) =>
+                `relative text-[14px] font-medium leading-5 transition-colors ${
+                  isActive
+                    ? "text-gold after:absolute after:-bottom-[4px] after:left-0 after:h-[2px] after:w-5 after:bg-gold"
+                    : "text-background hover:text-gold"
+                }`
+              }
+            >
+              {link.linkName}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-6 lg:flex">
+          <button
+            type="button"
+            onClick={() => setSound((v) => !v)}
+            aria-pressed={sound}
+            className="inline-flex items-center gap-2 text-[11px] text-subtitle transition-colors hover:text-background"
           >
-            {link.linkName}
-          </NavLink>
-        ))}
-      </div>
-      <div className="controls flex gap-5 items-center">
-        {/* <div className="language flex gap-2 items-center">
-          <button className="text-background focus:text-primary">
-            العربية
-          </button>
-          <span className="text-background">/</span>
-          <button className="text-background focus:text-primary">Englsh</button>
-        </div>
-        <div onClick={handleSound} className="ambient text-background">
-          <button className="flex gap-2 items-center">
-            {sound ? <HiOutlineSpeakerWave /> : <HiOutlineSpeakerXMark />}
-            <span className="">Ambient Sound</span>
+            {sound ? (
+              <Volume2 className="h-[15px] w-[15px]" />
+            ) : (
+              <VolumeX className="h-[15px] w-[15px]" />
+            )}
+            Ambient {sound ? "ON" : "OFF"}
           </button>
         </div> 
         <div className="login hidden lg:block">
@@ -72,11 +74,12 @@ function Header() {
             <LoginButton />
           )}
         </div>
+
+        <div className="block lg:hidden">
+          <SideMenu />
+        </div>
       </div>
-      <div className="block lg:hidden">
-        <SideMenu />
-      </div>
-    </div>
+    </header>
   );
 }
 

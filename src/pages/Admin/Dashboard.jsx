@@ -10,7 +10,7 @@ import AdminSettings from './AdminSettings';
 
 function Dashboard() {
   return (
-    <div>
+    <div className='min-w-0 flex-1'>
       <Routes>
         <Route path='admin-overview' element={<Overview/>}/>
         <Route path='admin-stories' element={<Stories/>}/>

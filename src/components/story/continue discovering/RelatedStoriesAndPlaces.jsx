@@ -6,7 +6,7 @@ const stories = [
   {
     category: "COPTIC",
     categoryColor: "bg-terracotta",
-    image: "story/5a45c33df370f90b426900d6b7a80472e4ef73e4.jpg",
+    image: "story/church.jpg",
     imageAlt:
       "Interior of a Coptic church with carved wooden iconostasis and warm natural light",
     title: "A sanctuary above the city",
@@ -19,7 +19,7 @@ const stories = [
   {
     category: "ISLAMIC",
     categoryColor: "bg-teal",
-    image: "public/story/ad546317ed06be828e7d8614eeedd7e0080aa166.jpg",
+    image: "public/story/islamic.jpg",
     imageAlt:
       "Courtyard of Sultan Hassan mosque with stone arches and a central fountain",
     title: "The art of the courtyard",

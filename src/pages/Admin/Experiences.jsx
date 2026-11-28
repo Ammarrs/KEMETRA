@@ -1,9 +1,6 @@
-import React from 'react'
+import AudioRecords from "./AudioRecords";
 
-function Experiences() {
-  return (
-    <div>Experiences</div>
-  )
-}
+// "3D Experiences" shares the Audio & 3D management page, opened on the 3D models tab.
+const Experiences = () => <AudioRecords initialTab="model" />;
 
-export default Experiences
+export default Experiences;
