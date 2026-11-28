@@ -7,9 +7,15 @@ import LoginButton from "./LoginButton";
 import DashboardButton from "./DashboardButton";
 
 function Header() {
+<<<<<<< Updated upstream
   let [sound, setSound] = useState(true);
   let [isLoggedin, setIsLogedin] = useState(true);
   let [isAdmin, setIsAdmin] = useState(true);
+=======
+  const [sound, setSound] = useState(false);
+  const [isLoggedin, setIsLoggedin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
+>>>>>>> Stashed changes
 
   const links = [
     { id: 1, linkName: "Home", linkPath: "/" },
@@ -51,7 +57,7 @@ function Header() {
             {sound ? <HiOutlineSpeakerWave /> : <HiOutlineSpeakerXMark />}
             <span className="">Ambient Sound</span>
           </button>
-        </div> */}
+        </div> 
         <div className="login hidden lg:block">
           {isLoggedin ? (
             <div className="flex gap-5 items-center">
