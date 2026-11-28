@@ -9,7 +9,7 @@ import DashboardButton from "./DashboardButton";
 function Header() {
 
   let [sound, setSound] = useState(true);
-  let [isLoggedin, setIsLogedin] = useState(true);
+  let [isLoggedin, setIsLoggedin] = useState(true);
   let [isAdmin, setIsAdmin] = useState(true);
 
 
