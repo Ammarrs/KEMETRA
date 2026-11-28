@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
 import InputEmail from './form/InputEmail';
 import InputPassword from "./form/InputPassword";
-import { Checkbox } from '@heroui/react';
 import { FiArrowRight, FiArrowUpRight, FiLock, } from "react-icons/fi";
+import { useAuth } from "../../../context/Authentication/authContext";
 
 export default function LoginForm() {
+  const {
+    login,
+    email,
+    setEmailError,
+    password,
+    setPasswordError,
+    rememberMe,
+    setRememberMe,
+    validateEmail,
+    validatePassword,
+  } = useAuth();
+
+  const handleCheckbox = (e) => {
+    setRememberMe(e.target.checked);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailValidation = validateEmail(email);
+    const passwordValidation = validatePassword(password);
+
+    setEmailError(emailValidation);
+    setPasswordError(passwordValidation);
+
+    if (emailValidation || passwordValidation) return;
+
+    login({ email, password }, rememberMe);
+  };
   return (
     <section className="mx-auto w-full max-w-xl font-body border-2 border-border p-5 rounded-3xl shadow-2xl">
 
@@ -24,7 +53,7 @@ export default function LoginForm() {
       </div>
 
       {/* Form */}
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Email */}
         <InputEmail />
         {/* Password */}
@@ -35,6 +64,8 @@ export default function LoginForm() {
             <input
               type="checkbox"
               name="rememberMe"
+              checked={rememberMe}
+              onChange={handleCheckbox}
               className="size-4 cursor-pointer rounded border-border accent-primary focus:ring-primar"
             />
             Remember me
@@ -50,7 +81,7 @@ export default function LoginForm() {
 
         {/* Sign In Button */}
         <button
-          type="button"
+          type="submit"
           className="flex h-12 w-full items-center justify-center gap-3 rounded-md bg-primary text-sm font-semibold text-secondary transition-all duration-300 hover:bg-primary-hover"
         >
           <FiArrowRight className="text-base" />

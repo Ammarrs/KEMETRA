@@ -25,7 +25,7 @@ const StoryEditorialHeader = () => {
             and human imagination of the Giza Plateau.
           </p>
 
-          <div className="flex flex-wrap items-center gap-5 text-[11px] font-semibold tracking-[0.16em] text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-5 text-[11px] font-semibold tracking-[0.16em] text-muted-foreground flex-col md:flex-row">
             <span>WRITTEN STORY</span>
             <span>AUDIO · SAMPLE EPISODE</span>
           </div>

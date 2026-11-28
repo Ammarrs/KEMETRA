@@ -1,6 +1,26 @@
-import React from 'react'
+import { useAuth } from "../../../../context/Authentication/authContext";
 
 const InputEmail = () => {
+  const {
+    email,
+    setEmail,
+    emailError,
+    setEmailError,
+    validateEmail,
+  } = useAuth();
+
+  const handleBlur = () => {
+    setEmailError(validateEmail(email));
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (emailError) {
+      setEmailError(validateEmail(value));
+    }
+  };
   return (
     <div>
 
@@ -8,24 +28,46 @@ const InputEmail = () => {
         <input
           id="email"
           type="text"
+          value={email}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder=" "
-          autoComplete="email"
-          className="peer h-14 w-full rounded-xl border-2 border-border bg-transparent px-4 text-foreground outline-none transition-colors focus:border-primary"
+          autoComplete="username"
+          className={`peer h-14 w-full rounded-xl border-2 bg-transparent px-4 text-foreground outline-none transition-colors
+            ${emailError
+              ? "border-danger focus:border-danger"
+              : "border-border focus:border-primary"
+            }`}
         />
         <label
           htmlFor="email"
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 bg-background px-1 text-muted-foreground transition-all duration-200
-                      peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary
-                      peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs"
-        >
-          Email or username
+          className={`pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 bg-background px-1 transition-all duration-200
+            peer-focus:top-0 peer-focus:text-xs
+            peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs
+            ${emailError
+              ? "text-danger"
+              : "text-muted-foreground peer-focus:text-primary"
+            }`}
+        > Email
         </label>
 
       </div>
-      <p className="text-xs text-muted-foreground mt-2">
-        Use the email or username linked to your account.
-      </p>
-    </div>
+      {emailError ? (
+        <p
+          id="email-error"
+          role="alert"
+          className="mt-2 text-xs text-danger"
+        >
+          {emailError}
+        </p>
+      ) : (
+        <p
+          id="email-hint"
+          className="mt-2 text-xs text-muted-foreground"
+        >
+          Use the email or username linked to your account.
+        </p>
+      )}    </div>
   )
 }
 
