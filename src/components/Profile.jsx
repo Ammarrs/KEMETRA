@@ -26,11 +26,11 @@ function Profile({ name = "Ammarr", role = "Member", initials = "AM", onNavigate
       onClick={onNavigate}
       className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-background/5"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary font-display text-sm text-primary">
+      <div className="flex h-15 w-15 shrink-0 bg-surface items-center justify-center rounded-full border border-primary font-display text-lg font-bold text-primary">
         {initials}
       </div>
       <div>
-        <p className="text-sm text-background">{name}</p>
+        <p className="text-3xl font-display font-bold text-foreground">{name}</p>
         <p className="text-xs text-muted-foreground">{role} · Profile</p>
       </div>
     </Link>

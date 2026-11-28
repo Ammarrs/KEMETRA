@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { HiOutlineSpeakerXMark, HiOutlineSpeakerWave } from "react-icons/hi2";
 import BrandMark from "./BrandMark";
 import SideMenu from "./SideMenu";
+import LoginButton from "./LoginButton";
+import DashboardButton from "./DashboardButton";
 
 function Header() {
   let [sound, setSound] = useState(true);
-  let [isLogedin, setIsLogedin] = useState(false);
+  let [isLoggedin, setIsLogedin] = useState(true);
+  let [isAdmin, setIsAdmin] = useState(true);
 
   const links = [
     { id: 1, linkName: "Home", linkPath: "/" },
@@ -50,16 +53,17 @@ function Header() {
           </button>
         </div> */}
         <div className="login hidden lg:block">
-          {isLogedin ? (
-            <div className="profile text-center border border-primary rounded-full p-2">
-              <span className="text-primary">AM</span>
+          {isLoggedin ? (
+            <div className="flex gap-5 items-center">
+              <Link to="/profile">
+                <div className="profile text-center border border-primary rounded-full p-2">
+                  <span className="text-primary">AM</span>
+                </div>
+              </Link>
+              {isAdmin && <DashboardButton />}
             </div>
           ) : (
-            <Link to="/login">
-              <button className="border hover:cursor-pointer border-divider rounded-md px-2 py-1 text-background">
-                Login
-              </button>
-            </Link>
+            <LoginButton />
           )}
         </div>
       </div>
